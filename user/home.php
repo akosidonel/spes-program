@@ -1,8 +1,3 @@
-<?php
-    include("function.php");
-    session_start();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,14 +11,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
       
       <!-- STYLE -->
-      <link rel="stylesheet" href="indexStyle.css">
+      <link rel="stylesheet" href="../assets/css/indexStyle.css">
 
 
     <title>SPES Home</title>
   </head>
   <body>
       <div class="footer">
-      <img src="top-banner.jpg">
+      <img src="../assets/img/top-banner.jpg">
       </div>
 
 <!--NAV BAR-->
@@ -106,7 +101,7 @@
       </ol>
     <div class="carousel-inner">
     <div class="carousel-item active">
-    <div class="overlay-image" style="background-image: url(spes1.jpg)">
+    <div class="overlay-image" style="background-image: url(../assets/img/spes1.jpg)">
       <div class="container">
         <h1><em>Special Program for Employment of Students (SPES)</em></h1>
         <p align="justify">The Special Program for Employment of Students is DOLE’s youth employment-bridging program which aims to provide temporary employment to poor but deserving students, out-of-school youth, and dependents of displaced or would-be displaced workers during summer and/or Christmas vacation or any time of the year to augment the family’s income to help ensure that beneficiaries are able to pursue their education.</p>
@@ -114,7 +109,7 @@
     </div>
     </div>
     <div class="carousel-item">
-    <div class="overlay-image" style="background-image: url(spes2.jpg)">
+    <div class="overlay-image" style="background-image: url(../assets/img/spes2.jpg)">
       <div class="container">
         <h1><em>Special Program for Employment of Students (SPES)</em></h1>
         <p align="justify">The Special Program for Employment of Students is DOLE’s youth employment-bridging program which aims to provide temporary employment to poor but deserving students, out-of-school youth, and dependents of displaced or would-be displaced workers during summer and/or Christmas vacation or any time of the year to augment the family’s income to help ensure that beneficiaries are able to pursue their education.</p>
@@ -122,7 +117,7 @@
     </div>
     </div>
     <div class="carousel-item">
-    <div class="overlay-image" style="background-image: url(spes3.jpg)">
+    <div class="overlay-image" style="background-image: url(../assets/img/spes3.jpg)">
       <div class="container">
         <h1><em>Special Program for Employment of Students (SPES)</em></h1>
         <p align="justify">The Special Program for Employment of Students is DOLE’s youth employment-bridging program which aims to provide temporary employment to poor but deserving students, out-of-school youth, and dependents of displaced or would-be displaced workers during summer and/or Christmas vacation or any time of the year to augment the family’s income to help ensure that beneficiaries are able to pursue their education.</p>

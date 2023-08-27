@@ -2,17 +2,17 @@
 session_start();
 error_reporting(0);
 ini_set('display_errors', 0);
-include("function.php") ;
+include("dbconnection/function.php") ;
 
-  if(isset($_POST['login'])){
-    $username = mysqli_real_escape_string($conn, $_POST['uname']);
-    $password = mysqli_real_escape_string($conn, $_POST['pass']);
+  if(isset($_POST['ulogin'])){
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
     $sql = mysqli_query($conn, "SELECT * FROM spesaccount WHERE username='$username' AND password='$password' ");
     $result=mysqli_num_rows($sql);
     if($result>0){
         $row=mysqli_fetch_assoc($sql);
-        $_SESSION['login'] = $row['id'];
-        header('location:home.php');
+        $_SESSION['ulogin'] = $row['spes_id'];
+        header('location:user/home.php');
     }else{
         echo 'Invalid Username or Password!';
     }
@@ -86,16 +86,16 @@ include("function.php") ;
                     <div class="row">
                         <div class="col-sm-12">
                         <div class="modalFormWrapper">
-                        <form method="POST">
+                        <form method="POST" action="">
                           <div class="form-group">
                             <label for="formUname">Username</label>
-                            <input type="text" class="form-control" name="uname" id="uname" placeholder="Username">
+                            <input type="text" class="form-control" name="username" id="uname" placeholder="Username">
                           </div>
                           <div class="form-group">
                             <label for="formPass">Password</label>
-                            <input type="password" class="form-control" name="pass" id="pass" placeholder="Password">
+                            <input type="password" class="form-control" name="password" id="pass" placeholder="Password">
                           </div>
-                          <button type="submit" name="login" class="btn btn-primary">Submit</button>
+                          <button type="submit" name="ulogin" class="btn btn-primary">Submit</button>
                         </form>
                         </div>
                         </div>
