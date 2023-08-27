@@ -12,7 +12,7 @@ include("dbconnection/function.php") ;
     if($result>0){
         $row=mysqli_fetch_assoc($sql);
         $_SESSION['ulogin'] = $row['spes_id'];
-        header('location:spesr/home.php');
+        header('location:spes/home.php');
     }else{
         echo 'Invalid Username or Password!';
     }
