@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('../dbconnection/function.php');
+include('../dbconnection/dbconnection.php');
  if(!isset($_SESSION['login'])){
    header('Location:index.php');
    exit();

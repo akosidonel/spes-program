@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-include('function.php');
+include('../dbconnection/dbconnection.php');
   if(isset($_POST['submit'])){
     if(isset($_POST['checkBoxId'])){
       foreach($_POST['checkBoxId'] as $checkboxid){

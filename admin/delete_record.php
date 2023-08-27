@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../dbconnection/function.php');
+include('../dbconnection/dbconnection.php');
 $message1 = "Profile Successfuly Deleted!";
 if(isset($_GET["deluserid"]))
 {

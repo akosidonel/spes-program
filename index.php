@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 ini_set('display_errors', 0);
-include("dbconnection/function.php") ;
+include('../dbconnection/dbconnection.php');
 
   if(isset($_POST['ulogin'])){
     $username = mysqli_real_escape_string($conn, $_POST['username']);

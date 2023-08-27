@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include('../dbconnection/function.php');
+  include('../dbconnection/dbconnection.php');
   $message1 = "Profile Updated!";
   $message2 = "Failed to update account!";
   

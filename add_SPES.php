@@ -1,5 +1,5 @@
 <?php
-  include('../dbconnection/function.php');
+include('../dbconnection/dbconnection.php');
   $message1 = "Profile Successfuly Added!";
   $message2 = "Failed to Add Profile!";
   
