@@ -1,3 +1,11 @@
+<?php
+session_start();
+error_reporting(0);
+include('../dbconnection/function.php');
+ if(!isset($_SESSION['ulogin'])){
+   header('Location:index.php');
+   exit();
+ }else {?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -140,3 +148,5 @@
 
   </body>
 </html>
+
+<?php }?>
