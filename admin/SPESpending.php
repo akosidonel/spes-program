@@ -1,13 +1,12 @@
 <?php
 session_start();
 error_reporting(0);
-include('function.php');
-
+include('../dbconnection/function.php');
  if(!isset($_SESSION['login'])){
    header('Location:index.php');
    exit();
  }else { ?>
-<?php include('../include/header.php');?>
+<?php $title = 'Spes Pending Page'; include('../include/header.php');?>
 	<div class="form-row">
 		<div class="container-fluid">
 		<div class="content">
@@ -55,9 +54,8 @@ $(document).ready(function() {
         paging:         false,
         "scrollX": true,
         "dom": '<"toolbar">frtip'
-    } );
-    
-} );
+    });  
+});
 </script>
 </html>
 <?php }?>

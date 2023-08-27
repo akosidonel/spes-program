@@ -4,24 +4,19 @@ error_reporting(0);
 ini_set('display_errors', 0);
 include("function.php") ;
 
-if(isset($_SESSION['login'])){
-  header('Location:admin/dashboard.php');
-  exit();
-}else{
-  if(isset($_POST['signinbtn'])){
-    $uname = mysqli_real_escape_string($conn, $_POST['uname']);
+  if(isset($_POST['login'])){
+    $username = mysqli_real_escape_string($conn, $_POST['uname']);
     $password = mysqli_real_escape_string($conn, $_POST['pass']);
-    $sql = "SELECT * FROM spesaccount WHERE adminUName ='$uname' AND adminPass = '$password' ";
-    $results = mysqli_query($conn,$sql);
-    if(mysqli_num_rows($results)==1){
-              $_SESSION['login'];
-              header('Location:home.php');
+    $sql = mysqli_query($conn, "SELECT * FROM spesaccount WHERE username='$username' AND password='$password' ");
+    $result=mysqli_num_rows($sql);
+    if($result>0){
+        $row=mysqli_fetch_assoc($sql);
+        $_SESSION['login'] = $row['id'];
+        header('location:home.php');
     }else{
-      $_SESSION['error']="Invalid Username or Password!";
+        echo 'Invalid Username or Password!';
     }
   } 
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

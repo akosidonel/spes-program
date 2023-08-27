@@ -1,21 +1,24 @@
 <?php
 session_start();
 error_reporting(0);
-include('function.php');
+include('../dbconnection/function.php');
 
  if(!isset($_SESSION['login'])){
    header('Location:index.php');
    exit();
  }else { ?>
-<?php include('../include/header.php');?>
+<?php $title = 'Spes Deployment'; include('../include/header.php');?>
 <div class="form-row">
     <div class="container">
     <div class="content">
     <h3>Deployment</h3>
       <form method="post" action="chkbox.php">
         <div class="row mb-4">
-          <div class="col-5">
-          <select class="form-control col-md-12" name='dept' required>
+          <div class="col-6">
+            <input type="text" class="form-control" placeholder="Search" >
+          </div>
+          <div class="col-4">
+          <select class="form-control" name='dept' required>
               <option >Departments:</option>    
                       <?php 
                       $query=mysqli_query($conn,"SELECT * FROM department"); 
@@ -24,7 +27,7 @@ include('function.php');
                       <?php }?>
             </select>
           </div>
-          <div class="col-6">
+          <div class="col-2">
           <button type="submit" name="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
@@ -33,7 +36,7 @@ include('function.php');
                   <table id="example" class="display table-striped" style="width:100%; height: 100%;">
                 <thead>          
               <tr class="header">
-              <th class="text-center"><input type="checkbox" id="checkAll" required></th>
+              <th class="text-center"><input type="checkbox" id="checkAll"></th>
               <th class="text-center">Spes ID#</th>
               <th class="text-center">Surname</th>
               <th class="text-center">First Name</th>

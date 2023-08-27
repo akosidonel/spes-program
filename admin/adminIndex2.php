@@ -1,13 +1,13 @@
 <?php
 session_start();
 error_reporting(0);
-include('function.php');
+include('../dbconnection/function.php');
 
  if(!isset($_SESSION['login'])){
    header('Location:index.php');
    exit();
  }else { ?>
-<?php include('../include/header.php');?>
+<?php $title = 'Admin Control page'; include('../include/header.php');?>
 	<div class="form-row">
 		<div class="container">
 		<div class="content">

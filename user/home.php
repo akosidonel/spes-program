@@ -1,10 +1,7 @@
 <?php
     include("function.php");
     session_start();
-    connectme();
-    if($_SESSION['login']!==true){
-        header('location:index.php');
-    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,15 +22,8 @@
     <title>SPES Home</title>
   </head>
   <body>
-    <?php
-                if(isset($_POST['logout'])){
-                    session_destroy();
-                    header('location:index.php');
-                }
-    
-                ?>
       <div class="footer">
-        <img src="top-banner.jpg">
+      <img src="top-banner.jpg">
       </div>
 
 <!--NAV BAR-->
