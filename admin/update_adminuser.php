@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-	<link rel="stylesheet" href="uuStyle.css">
-
-
-</head>
-
-<body>
-
 <?php
-  include('function.php');
-  connectme();
+session_start();
+error_reporting(0);
+include('../dbconnection/function.php');
+ if(!isset($_SESSION['login'])){
+   header('Location:index.php');
+   exit();
+ }else {?>
+<?php $title = 'Update Administrator'; include('../include/header.php');?>
+<?php
   $id = $_GET['userId'];
-  $result = mysql_query("SELECT * FROM pesoadmin where userId='$id'"); 
-  $row=mysql_fetch_array($result);
+  $result = mysqli_query($conn,"SELECT * FROM pesoadmin where id='$id'"); 
+  $row=mysqli_fetch_array($result);
 
   if(isset($_POST['profileSubmit'])){
     $id = $_POST['userid'];
@@ -26,7 +19,7 @@
     $vFname = $_POST['Fname'];
     $vPosition = $_POST['Position'];
 
-    $query = "UPDATE pesoadmin SET adminUName='$vUname',adminPass='$vPasss',fullName='$vFname',possition='$vPosition' WHERE userId='$id'";
+    $query = "UPDATE pesoadmin SET username='$vUname',password='$vPasss',full_name='$vFname',position='$vPosition' WHERE id='$id'";
     if(mysql_query($query)){
       echo "<script>
           alert('Successfully updated record.');
@@ -38,7 +31,6 @@
     }
 }
 ?>
-
 <!--FORM-->
 <hr>
 <div class="container">
@@ -50,26 +42,26 @@
       <div class="row">
         <div class="col-sm-6">
           <label>Username</label>
-          <input type="text" name="Uname" id="Uname" class="form-control" value="<?php echo $row['adminUName']; ?>">
+          <input type="text" name="Uname" id="Uname" class="form-control" value="<?php echo $row['username']; ?>">
           <input type="hidden" name="userid" id="userid" value="<?php echo $id; ?>">
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
           <label>Password</label>
-          <input type="password" name="Pass" id="Pass" class="form-control" value="<?php echo $row['adminPass']; ?>">
+          <input type="password" name="Pass" id="Pass" class="form-control" value="<?php echo $row['password']; ?>">
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
           <label>Full Name</label>
-          <input type="text" name="Fname" id="Fname" class="form-control" value="<?php echo $row['fullName']; ?>">
+          <input type="text" name="Fname" id="Fname" class="form-control" value="<?php echo $row['full_name']; ?>">
         </div>
       </div>
       <div class="row">
         <div class="col-sm-12">
           <label>Position</label>
-          <input type="text" name="Position" id="Position" class="form-control" value="<?php echo $row['possition']; ?>">
+          <input type="text" name="Position" id="Position" class="form-control" value="<?php echo $row['position']; ?>">
         </div>
       </div>
       <div class="row">
@@ -77,22 +69,16 @@
       </div>
       <div class="row">
         <br>
-        <div class="col-auto">
-          <input type="submit" class="form-control" name="profileSubmit">
-          <button name="discard" id="discard" class="btn" onclick="window.close();">Discard</button>
+        <div class="col-auto mb-3">
+          <button type="submit" class="btn btn-success" name="profileSubmit">Submit</button>
+          <button name="discard" id="discard" class="btn btn-danger" onclick="window.close();">Discard</button>
         </div>
       </div>
     </div>
   </form>
 </div>
 <!--    </form>-->
-
-<!--
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
--->
-    <script src="bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
-
-  </body>
+</body>
+<?php include('../include/footer.php');?>
 </html>
+<?php }?>

@@ -11,14 +11,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
       
       <!-- STYLE -->
-      <link rel="stylesheet" href="requireStyle.css">
+      <link rel="stylesheet" href="assets/css/requireStyle.css">
 
 
     <title>SPES Home</title>
   </head>
   <body>
       <div class="footer">
-        <img src="top-banner.jpg">
+        <img src="assets/img/top-banner.jpg">
       </div>
 
 <!--NAV BAR-->
@@ -98,7 +98,7 @@
       </ol>
     <div class="carousel-inner">
     <div class="carousel-item active">
-    <div class="overlay-image" style="background-image: url(spes1.jpg)">
+    <div class="overlay-image" style="background-image: url(assets/img/spes1.jpg)">
       <div class="container">
         <h1><em>Qualifications (SPES)</em></h1>
         <p>1. Grade 12, diploma course up to 3rd to 4th year college but not a graduating diploma course or college student. <br>
@@ -125,7 +125,7 @@
     </div>
     </div>
     <div class="carousel-item">
-    <div class="overlay-image" style="background-image: url(spes2.jpg)">
+    <div class="overlay-image" style="background-image: url(assets/img/spes2.jpg)">
       <div class="container">
         <h1><em>Qualifications (SPES)</em></h1>
         <p>1. Grade 12, diploma course up to 3rd to 4th year college but not a graduating diploma course or college student. <br>
@@ -152,7 +152,7 @@
     </div>
     </div>
     <div class="carousel-item">
-    <div class="overlay-image" style="background-image: url(spes3.jpg)">
+    <div class="overlay-image" style="background-image: url(assets/img/spes3.jpg)">
       <div class="container">
         <h1><em>Qualifications (SPES)</em></h1>
         <p>1. Grade 12, diploma course up to 3rd to 4th year college but not a graduating diploma course or college student. <br>

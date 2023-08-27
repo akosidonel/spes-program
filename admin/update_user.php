@@ -1,31 +1,18 @@
 <?php
 session_start();
 error_reporting(0);
-include('function.php');
+include('../dbconnection/function.php');
 
  if(!isset($_SESSION['login'])){
    header('Location:index.php');
    exit();
  }else { ?>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="uuStyle.css">
-
-
-</head>
-
-<body>
+<?php $title = 'Update Information'; include('../include/header.php');?>
 <?php
 
   $id = $_GET['id'];
-  $result = mysqli_query("SELECT * FROM spesaccounts where spes_id='$id'"); 
+  $result = mysqli_query($conn,"SELECT * FROM spesaccount where spes_id='$id'"); 
   $row=mysqli_fetch_array($result);
 
   if(isset($_POST['profileSubmit'])){
@@ -78,8 +65,8 @@ include('function.php');
     $spesYear = $_POST['spesYear'];
     $spesID = $_POST['spesID'];
 
-    $query = "UPDATE spesaccounts SET username='$uName',password='$pass',surName='$sName',firstName='$fName',mName='$mName',status='$stat',gender='$sex',doBirth='$dob',poBirth='$pob',cShip='$cship',gsisBeneficiary='$gsis',relationship='$relation',pAdd='$pAdd',cAdd='$cAdd',mNo='$phone',email='$email',socialAcc='$socialmedia',pStatus='$pstat',fatherName='$father',fCNo='$fcnumber',fStatus='$fpstat',fOccu='$foccupation',fSalary='$fsalary',motherName='$mother',mCNo='$mcnumber',mStatus='$mpstat',mOccu='$moccupation',mSalary='$msalary',elemSName='$eSn',elemDegree='$eDec',elemYearLvl='$eYl',elemDEnd='$eDa',secondSName='$sSm',secondDegree='$sDec',secondYearLvl='$sYl',secondDEnd='$sDa',tertSName='$tSm',tertDegree='$tDec',tertYearLvl='$tYl',tertDEnd='$tDa',tecSName='$tecSm',tecDegree='$tecDec',tecYearLvl='$tecYl',tectDEnd='$tecDa',historySpes='$spesAvail',historyYear='$spesYear',spesID='$spesID' WHERE id='$id'";
-  if(mysqli_query($query)){
+    $query = "UPDATE spesaccount SET username='$uName',password='$pass',surName='$sName',firstName='$fName',mName='$mName',status='$stat',gender='$sex',doBirth='$dob',poBirth='$pob',cShip='$cship',gsisBeneficiary='$gsis',relationship='$relation',pAdd='$pAdd',cAdd='$cAdd',mNo='$phone',email='$email',socialAcc='$socialmedia',pStatus='$pstat',fatherName='$father',fCNo='$fcnumber',fStatus='$fpstat',fOccu='$foccupation',fSalary='$fsalary',motherName='$mother',mCNo='$mcnumber',mStatus='$mpstat',mOccu='$moccupation',mSalary='$msalary',elemSName='$eSn',elemDegree='$eDec',elemYearLvl='$eYl',elemDEnd='$eDa',secondSName='$sSm',secondDegree='$sDec',secondYearLvl='$sYl',secondDEnd='$sDa',tertSName='$tSm',tertDegree='$tDec',tertYearLvl='$tYl',tertDEnd='$tDa',tecSName='$tecSm',tecDegree='$tecDec',tecYearLvl='$tecYl',tectDEnd='$tecDa',historySpes='$spesAvail',historyYear='$spesYear',spesID='$spesID' WHERE spes_id='$id'";
+  if(mysqli_query($conn,$query)){
   echo "<script>
       alert('Successfully updated record.');
       window.opener.location.reload();
@@ -358,15 +345,8 @@ include('function.php');
         </div>
         </form>
 <!--    </form>-->
-
-<!--
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
--->
-    <script src="bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
-
   </body>
+  <?php include('../include/footer.php');?>
 </html>
 
 <?php }?>
