@@ -1,0 +1,62 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+body{
+    background-color: #e6ffe6;
+}
+
+.container-fluid {
+  background-color: #fff;
+  color: #000;
+  height: auto;
+}
+.container{
+  height: 100%;
+  width: 100%;
+}
+
+
+/*table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 5px solid #fff;
+      background: #99e699;
+      box-sizing: border-box;
+      padding: 10px 10px;
+      border-radius: 20px;
+}
+
+td {
+  text-align: center;
+  word-wrap: normal;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  height: 50px;
+  width: 150px;
+  word-wrap: normal;
+}
+
+h3 {
+  margin: 20px;
+}
+
+.content #table-responsive {
+  margin: 20px;
+  font-size: 16px;
+}
+
+.content #wew {
+  margin: 20px;
+  font-size: 16px;
+}*/

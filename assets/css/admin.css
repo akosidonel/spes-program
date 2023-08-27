@@ -1,0 +1,68 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+body{
+    background-color: #e6ffe6;
+}
+
+/*.container {
+    height: 100%;
+    width: 100%;
+    background: #99e699;
+    box-sizing: border-box;
+    padding: 30px 30px;
+    border-radius: 20px;
+    top: 67%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}*/
+
+table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 5px solid #fff;
+      background: #99e699;
+      box-sizing: border-box;
+      padding: 10px 10px;
+      border-radius: 20px;
+}
+
+td {
+  text-align: center;
+  word-wrap: normal;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  height: 50px;
+  width: 150px;
+  word-wrap: normal;
+
+#editBtn {
+    /*color: #fff;*/
+    /*background: #00e600;*/
+/*    border-radius: 5px;
+    box-sizing: border-box;*/
+    border-style: none;
+    padding: 10px 10px;
+    font-family: Verdana;
+    background-color: #fff;
+
+}
+
+#editBtn:hover
+{
+	cursor: pointer;
+	/*background: #fff;*/
+	color: #00e600;
+}

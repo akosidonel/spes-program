@@ -1,0 +1,83 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+body{
+    background-color: #e6ffe6;
+}
+
+hr {
+  clear: both;
+  visibility: hidden;
+}
+
+.container-fluid {
+    background-color: #fff;
+    color: #fff;
+    position: relative;
+}
+
+.container {
+    display:block;
+    padding: 20px;
+    font-size: 15px;
+    background-color: #fcfdff;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.container-fluid a {
+    color: #434449;
+}
+.
+
+.footer {
+    position:sticky;
+    display: block;
+    height: auto;
+}
+ 
+.footer img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.container h1 {
+    text-align: center;
+}
+ 
+.container label {
+    padding: 5px;
+}
+
+.form-row>.col, .form-row>[class*=col-] {
+    padding-right: 5px;
+    padding-left: 7px;
+    padding-top: 5px;
+}
+
+
+.col-auto input[type="submit"]
+{
+    border: none;
+    width: 80px;
+    outline: none;
+    height: 50px;
+    color: #27b635;
+    font-size: 18px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.col-auto input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #27b635;
+    color: #fff;
+}

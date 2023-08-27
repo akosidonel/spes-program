@@ -1,0 +1,99 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+body{
+    background-color: #e6ffe6;
+}
+
+hr {
+  clear: both;
+  visibility: hidden;
+}
+
+.container-fluid {
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+#conbox {
+    background: #e6ffe6;
+    box-shadow: -2px -2px 5px 2px rgba(0,0,0,.15), 2px 2px 5px 2px rgba(0,0,0,.5);
+}
+
+.container-fluid a {
+    color: #434449;
+}
+
+.footer {
+    position:sticky;
+    display: block;
+    height: auto;
+}
+ 
+.footer img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+label {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+article p {
+    font-size: 30px;
+    padding: 20px;
+    text-align: justify;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.row::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.icon img{
+    width: 100%;
+    height: 100%;s
+}
+
+div.box {
+    text-align: center;
+    margin: 24px;
+    padding: 36px 24px 40px 24px;
+    border-radius: 7px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px 0 rgba(0,0,0,.1);
+}
+
+div.spesIcon img {
+    display: block;
+    margin: auto;
+}

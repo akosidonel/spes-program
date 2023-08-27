@@ -1,0 +1,38 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+body{
+    background-color: #e6ffe6;
+}
+
+.container {
+    height: 400px;
+    width: 400px;
+	background: #99e699;
+	box-sizing: border-box;
+	padding: 30px 30px;
+	border-radius: 20px;
+    top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+}
+
+#submit {
+    color: #fff;
+    background: #3399ff;
+    border-radius: 5px;
+}
+
+#submit:hover
+{
+	cursor: pointer;
+	background: #fff;
+	color: #3399ff;
+}
