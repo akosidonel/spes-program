@@ -11,9 +11,10 @@ LOGOUT -FUNCTIONAL
 --------------------------------------------------------------------
 ADMIN-PANEL
 LOGIN -FUNCTIONAL
-DASHBOARD - ON GOING // notice of application approval not found
+DASHBOARD - ON GOING
 MANAGE ADMINISTRATOR(VIEW,UPDATE,DELETE) - FUNCTIONAL
 SPES PENDING ACCOUNT - ON GOING
 SPES DEPLOYMENT - FUNCTIONAL
 LOGOUT - FUNCTIONAL
-
+--------------------------------------------------------------------
+// notice of application approval not found
