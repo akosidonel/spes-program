@@ -39,7 +39,7 @@ include('../dbconnection/function.php');
                 <td>
 								<a href='update_user.php' target="_blank" onclick="window.open('update_user.php?id=<?=$row['spes_id'] ?>'); return false;"><i class="fa-solid fa-file-pen"></i></a>
 								 |
-								<a href="javascript:confirmDelete(<?=$row['id'] ?>)"><i class="fa-solid fa-trash text-danger"></i></a>
+								<a href="javascript:confirmDelete(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-trash text-danger"></i></a>
 								</td>
                 <td><?=$row['spes_id']?></td>
 								<td><?=$row['firstName'].' '.$row['surName']?></td>				

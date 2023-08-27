@@ -1,12 +1,11 @@
 <?php
   session_start();
-  mysql_connect("localhost","root","") or die (mysql_error());
-  mysql_select_db("spesdb") or die (mysql_error());
+  include('../dbconnection/function.php');
   $message1 = "Profile Updated!";
   $message2 = "Failed to update account!";
   
   if(isset($_POST['profileSubmit'])){
-    $id=$_SESSION['id'];
+    $id=$_SESSION['ulogin'];
     $uName = $_POST['uName'];
     $pass = $_POST['pass'];
     $sName = $_POST['sName'];
@@ -55,8 +54,8 @@
     $spesYear = $_POST['spesYear'];
     $spesID = $_POST['spesID'];
 
-    $query = "UPDATE spesaccounts SET username='$uName',password='$pass',surName='$sName',firstName='$fName',mName='$mName',status='$stat',gender='$sex',doBirth='$dob',poBirth='$pob',cShip='$cship',gsisBeneficiary='$gsis',relationship='$relation',pAdd='$pAdd',cAdd='$cAdd',mNo='$phone',email='$email',socialAcc='$socialmedia',pStatus='$pstat',fatherName='$father',fCNo='$fcnumber',fStatus='$fpstat',fOccu='$foccupation',fSalary='$fsalary',motherName='$mother',mCNo='$mcnumber',mStatus='$mpstat',mOccu='$moccupation',mSalary='$msalary',elemSName='$eSn',elemDegree='$eDec',elemYearLvl='$eYl',elemDEnd='$eDa',secondSName='$sSm',secondDegree='$sDec',secondYearLvl='$sYl',secondDEnd='$sDa',tertSName='$tSm',tertDegree='$tDec',tertYearLvl='$tYl',tertDEnd='$tDa',tecSName='$tecSm',tecDegree='$tecDec',tecYearLvl='$tecYl',tectDEnd='$tecDa',historySpes='$spesAvail',historyYear='$spesYear',spesID='$spesID' WHERE id='$id'";
-  if(mysql_query($query)){
+    $query = "UPDATE spesaccount SET username='$username',password='$pass',surName='$sName',firstName='$fName',mName='$mName',status='$stat',gender='$sex',doBirth='$dob',poBirth='$pob',cShip='$cship',gsisBeneficiary='$gsis',relationship='$relation',pAdd='$pAdd',cAdd='$cAdd',mNo='$phone',email='$email',socialAcc='$socialmedia',pStatus='$pstat',fatherName='$father',fCNo='$fcnumber',fStatus='$fpstat',fOccu='$foccupation',fSalary='$fsalary',motherName='$mother',mCNo='$mcnumber',mStatus='$mpstat',mOccu='$moccupation',mSalary='$msalary',elemSName='$eSn',elemDegree='$eDec',elemYearLvl='$eYl',elemDEnd='$eDa',secondSName='$sSm',secondDegree='$sDec',secondYearLvl='$sYl',secondDEnd='$sDa',tertSName='$tSm',tertDegree='$tDec',tertYearLvl='$tYl',tertDEnd='$tDa',tecSName='$tecSm',tecDegree='$tecDec',tecYearLvl='$tecYl',tectDEnd='$tecDa',historySpes='$spesAvail',historyYear='$spesYear',spesID='$spesID' WHERE spes_id='$id'";
+  if(mysqli_query($conn,$query)){
   echo "<script type='text/javascript'>alert('$message1');
     window.location='profile.php';
     </script>";

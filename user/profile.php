@@ -1,13 +1,16 @@
-  <!-- CONNECTION -->
+<?php
+session_start();
+error_reporting(0);
+include('../dbconnection/function.php');
+ if(!isset($_SESSION['ulogin'])){
+   header('Location:index.php');
+   exit();
+ }else {?>
+  
   <?php
-    include 'connectDb.php';
-    session_start();
-    $id=$_SESSION['id'] ;
-    $query=mysqli_query($db,"SELECT * FROM spesaccount where id='$id'")or die(mysqli_error());
+    $id=$_SESSION['ulogin'] ;
+    $query=mysqli_query($conn,"SELECT * FROM spesaccount where spes_id='$id'");
     $row=mysqli_fetch_array($query);
-    if($_SESSION['login']!==true){
-        header('location:index.php');
-    }
   ?>
 
 <!DOCTYPE html>
@@ -23,7 +26,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- STYLE -->
-    <link rel="stylesheet" href="pStyle.css">
+    <link rel="stylesheet" href="../assets/css/pStyle.css">
 
   <title>Student Profile</title>
   </head>
@@ -31,16 +34,8 @@
   <!-- BODY -->
   <body>
       <div class="footer">
-      <img src="top-banner.jpg">
+      <img src="../assets/img/top-banner.jpg">
       </div>
-                <?php
-                if(isset($_POST['logout'])){
-                    session_destroy();
-                    header('location:index.php');
-                }
-    
-                ?>
-
   <!--NAV BAR-->
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -156,7 +151,7 @@
         </div>
         <div class="col-sm-3">
           <label class="col-form-label" for="pass">Password:</label>
-          <input type="password" class="form-control" name="pass" pattern=".{6,}" title="Six or more characters" value="<?php echo $row['password']; ?>" required>
+          <input type="password" class="form-control" name="pass" pattern=".{6,}" title="Six or more characters" value="<?php echo $row['password']; ?>">
         </div>
         <div class="col">
           <label class="col-form-label" for="dob">Date of Birth:</label>
@@ -384,3 +379,4 @@
 
   </body>
 </html>
+<?php }?>

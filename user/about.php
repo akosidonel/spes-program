@@ -1,11 +1,11 @@
 <?php
-    include("function.php");
-    session_start();
-    connectme();
-    if($_SESSION['login']!==true){
-        header('location:index.php');
-    }
-?>
+session_start();
+error_reporting(0);
+include('../dbconnection/function.php');
+ if(!isset($_SESSION['ulogin'])){
+   header('Location:index.php');
+   exit();
+ }else {?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,23 +17,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-      
-      <link rel="stylesheet" href="eventsStyle.css">
+<link rel="stylesheet" href="../assets/css/eventsStyle.css">
 
 
     <title>SPES-PESO About</title>
   </head>
   <body>
       <div class="footer">
-        <img src="top-banner.jpg">
+        <img src="../assets/img/top-banner.jpg">
       </div>
-                <?php
-                if(isset($_POST['logout'])){
-                    session_destroy();
-                    header('location:index.php');
-                }
-    
-                ?>
   <!--NAV BAR-->
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -149,7 +141,7 @@
       </div>
       <div class="col-5">
       <div class="spesIcon">
-          <img src="dole_logo.png">
+          <img src="../assets/img/dole_logo.png">
       </div>   
       </div>
     </div>
@@ -165,7 +157,7 @@
       </div>
       <div class="col-5">
       <div class="spesIcon">
-          <img src="peso_logo.png">
+          <img src="../assets/img/peso_logo.png">
       </div>   
       </div>
     </div>
@@ -180,7 +172,7 @@
       </div>
       <div class="col-5">
       <div class="spesIcon">
-          <img src="PC-logo.png">
+          <img src="../assets/img/PC-logo.png">
       </div>   
       </div>
     </div>
@@ -195,7 +187,7 @@
       </div>
       <div class="col-5">
       <div class="spesIcon">
-          <img src="spes_logo.png">
+          <img src="../assets/img/spes_logo.png">
       </div>   
       </div>
     </div>
@@ -208,3 +200,4 @@
 
   </body>
 </html>
+<?php }?>
