@@ -1,7 +1,5 @@
 <?php
-  session_start();
-  mysql_connect("localhost","root","") or die (mysql_error());
-  mysql_select_db("spesdb") or die (mysql_error());
+  include('../dbconnection/function.php');
   $message1 = "Profile Successfuly Added!";
   $message2 = "Failed to Add Profile!";
   
@@ -55,14 +53,14 @@
     $spesID = $_POST['spesID'];
 
     $query = "INSERT INTO spesaccounts(username,password,surName,firstName,mName,status,gender,doBirth,poBirth,cShip,gsisBeneficiary,relationship,pAdd,cAdd,mNo,email,socialAcc,pStatus,fatherName,fCNo,fStatus,fOccu,fSalary,motherName,mCNo,mStatus,mOccu,mSalary,elemSName,elemDegree,elemYearLvl,elemDEnd,secondSName,secondDegree,secondYearLvl,secondDEnd,tertSName,tertDegree,tertYearLvl,tertDEnd,tecSName,tecDegree,tecYearLvl,tectDEnd,historySpes,historyYear,spesID) VALUES('$uName','$pass','$sName','$fName','$mName','$stat','$sex','$dob','$pob','$cship','$gsis','$relation','$pAdd','$cAdd','$phone','$email','$socialmedia','$pstat','$father','$fcnumber','$fpstat','$foccupation','$fsalary','$mother','$mcnumber','$mpstat','$moccupation','$msalary','$eSn','$eDec','$eYl','$eDa','$sSm','$sDec','$sYl','$sDa','$tSm','$tDec','$tYl','$tDa','$tecSm','$tecDec','$tecYl','$tecDa','$spesAvail','$spesYear','$spesID')";
-  if(mysql_query($query)){
-  echo "<script type='text/javascript'>alert('$message1');
-        window.opener.location.reload();
-        window.close();
-        </script>";
+    if(mysql_query($conn,$query)){
+    echo "<script type='text/javascript'>alert('$message1');
+          window.opener.location.reload();
+          window.close();
+          </script>";
 
-  } else {
-  echo "<script type='text/javascript'>alert('$message2');</script>";
-}
+    } else {
+    echo "<script type='text/javascript'>alert('$message2');</script>";
+  }
 }
 ?>
