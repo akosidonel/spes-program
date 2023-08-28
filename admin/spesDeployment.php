@@ -19,7 +19,7 @@ include('../dbconnection/dbconnection.php');
           </div>
       </form>
     </div>
-    <form method="post" action="chkbox.php">
+    <form method="post" action="../view/view.php">
         <div class="row mb-4">
           <div class="col-6">
           <select class="form-control" name='dept' required>
