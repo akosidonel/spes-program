@@ -1,5 +1,7 @@
 <?php
-include('function.php');
+session_start();
+error_reporting(0);
+include('../dbconnection/dbconnection.php');
                   //Import PHPMailer classes into the global namespace
               //These must be at the top of your script, not inside a function
               use PHPMailer\PHPMailer\PHPMailer;
@@ -14,7 +16,7 @@ connectme();
 	$id = $_GET['id'];
 	$message1 = "Account has been verified!";
 	$message2 = "Failed to accept!";
-	$result = mysql_query("SELECT * FROM spesrequest where id='$id'"); 
+	$result = mysqli_query($conn,"SELECT * FROM spesaccount where spes_id='$id'"); 
 	while($row=mysql_fetch_array($result)) 
 	{
     $uName = $row['username'];
@@ -111,11 +113,11 @@ connectme();
 
 	$query = "INSERT INTO spesaccount(id,username,password,surName,firstName,mName,status,gender,doBirth,poBirth,cShip,gsisBeneficiary,relationship,pAdd,cAdd,mNo,email,socialAcc,pStatus,fatherName,fCNo,fStatus,fOccu,fSalary,motherName,mCNo,mStatus,mOccu,mSalary,elemSName,elemDegree,elemYearLvl,elemDEnd,secondSName,secondDegree,secondYearLvl,secondDEnd,tertSName,tertDegree,tertYearLvl,tertDEnd,tecSName,tecDegree,tecYearLvl,tectDEnd,historySpes,historyYear,spesID) VALUES(NULL,'$uName','$pass','$sName','$fName','$mName','$stat','$sex','$dob','$pob','$cship','$gsis','$relation','$pAdd','$cAdd','$phone','$email','$socialmedia','$pstat','$father','$fcnumber','$fpstat','$foccupation','$fsalary','$mother','$mcnumber','$mpstat','$moccupation','$msalary','$eSn','$eDec','$eYl','$eDa','$sSm','$sDec','$sYl','$sDa','$tSm','$tDec','$tYl','$tDa','$tecSm','$tecDec','$tecYl','$tecDa','$spesAvail','$spesYear','$spesID')";
 	$msql = "DELETE FROM spesrequest WHERE spesrequest.id = '$id'";
-	if(mysql_query($query)){
+	if(mysqli_query($conn,$query)){
 	  echo "<script type='text/javascript'>alert('$message1');
 	      window.location='SPESpending.php';
 	     </script>";
-	 if(mysql_query($msql)){
+	 if(mysqli_query($conn,$msql)){
 	  }
 	}
 	  echo "<script type='text/javascript'>alert('$message2');
