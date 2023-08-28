@@ -30,21 +30,6 @@ include('../dbconnection/dbconnection.php');
       </form>
     </div>
     <form method="post" action="../view/view.php">
-        <div class="row mb-4">
-          <div class="col-6">
-          <select class="form-control" name='dept' required>
-              <option >Departments:</option>    
-                      <?php 
-                      $query=mysqli_query($conn,"SELECT * FROM department"); 
-                            while($row=mysqli_fetch_array($query)){?>
-                            <option value="<?php echo htmlentities($row['dept_id']);?>"><?php echo htmlentities($row['department_name']);?></option>
-                      <?php }?>
-            </select>
-          </div>
-          <div class="col-2">
-          <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
             <div class="table-responsive">
                   <table id="example" class="display table-striped" style="width:100%; height: 100%;">
                 <thead>          
@@ -63,6 +48,32 @@ include('../dbconnection/dbconnection.php');
           </tbody>
           </table>
           </div>
+          <div class="row mb-3 mt-4">
+          <div class="col-6">
+          <label class="col-form-label">Department</label>
+          <select class="form-control" name='dept' required>
+              <option value="">Select..</option>    
+                      <?php 
+                      $query=mysqli_query($conn,"SELECT * FROM department"); 
+                            while($row=mysqli_fetch_array($query)){?>
+                            <option value="<?php echo htmlentities($row['dept_id']);?>"><?php echo htmlentities($row['department_name']);?></option>
+                      <?php }?>
+            </select>
+          </div>
+          <div class="col-3">
+          <label class="col-form-label">Date From</label>
+          <input type="date" name="datefrom" class="form-control" placeholder="Date From" >
+          </div>
+          <div class="col-3">
+          <label class="col-form-label">Date To</label>
+          <input type="date" name="dateto" class="form-control" placeholder="Date To" >
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-auto">
+          <button type="submit" name="submit" class="btn btn-primary"><i class="fa-solid fa-file-export"></i> Submit</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>

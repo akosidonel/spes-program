@@ -9,7 +9,7 @@ if(isset($_POST['action'])){
         $sql= "SELECT deployment_history.spes_id,deployment_history.dep_status,
         spesaccount.spes_id,spesaccount.surName,spesaccount.firstName,spesaccount.tertDegree,spesaccount.email,spesaccount.gender
         FROM deployment_history JOIN spesaccount ON deployment_history.spes_id=spesaccount.spes_id
-        WHERE deployment_history.dep_status=0";
+        WHERE dep_status=0 ORDER BY deployment_history.spes_id ASC LIMIT 30";
         getData($sql);
     }
     //spes deployment dynamic search
@@ -25,9 +25,11 @@ if(isset($_POST['action'])){
 if(isset($_POST['submit'])){
     if(isset($_POST['checkBoxId'])){
       foreach($_POST['checkBoxId'] as $checkboxid){
+        $dateFrom = mysqli_real_escape_string($conn, $_POST['datefrom']);
+        $dateTo = mysqli_real_escape_string($conn, $_POST['dateto']);
         $dept = mysqli_real_escape_string($conn, $_POST['dept']);
         $deploymentStatus=1;
-        $update = mysqli_query($conn, "UPDATE deployment_history SET dept_id='$dept',dep_status='$deploymentStatus' WHERE spes_id ='$checkboxid' ");
+        $update = mysqli_query($conn, "UPDATE deployment_history SET dept_id='$dept',dep_status='$deploymentStatus', date_from='$dateFrom', date_to='$dateTo' WHERE spes_id ='$checkboxid' ");
 
                 if($update){
                     $_SESSION['status'] = "Deployed Successfully";
