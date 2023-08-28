@@ -28,6 +28,11 @@ if(isset($_POST['submit'])){
         $dept = mysqli_real_escape_string($conn, $_POST['dept']);
         $deploymentStatus=1;
         $update = mysqli_query($conn, "UPDATE deployment_history SET dept_id='$dept',dep_status='$deploymentStatus' WHERE spes_id ='$checkboxid' ");
+
+                if($update){
+                    $_SESSION['status'] = "Deployed Successfully";
+                    header('location:../admin/spesDeployment.php');
+                }
       }
     }
   }

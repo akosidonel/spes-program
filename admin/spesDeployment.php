@@ -11,6 +11,16 @@ include('../dbconnection/dbconnection.php');
 <div class="form-row">
     <div class="container">
     <div class="content">
+      <?php 
+      if(isset($_SESSION['status'])){?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?php echo $_SESSION['status']; ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    <?php
+        unset($_SESSION['status']);}?>
     <h3>Deployment</h3>
     <form action="" method="POST">
     <div class="row mb-4">
