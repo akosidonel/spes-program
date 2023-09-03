@@ -52,7 +52,7 @@ include('../dbconnection/dbconnection.php');
 							?>
 							<tr>
 								<td>
-								<a href='accept.php?id=<?php echo $row['spes_id'] ?>'><i class="fa-solid fa-check text-success"></i></a>
+								<a href='accept.php?email=<?php echo $row['email'] ?>'><i class="fa-solid fa-check text-success"></i></a>
                 |
 								<a href='reject.php?id=<?php echo $row['spes_id'] ?>'> <i class="fa-solid fa-xmark text-danger"></i></a>
 								</td>
