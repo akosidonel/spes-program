@@ -54,7 +54,7 @@ include('../dbconnection/dbconnection.php');
 								<td>
 								<a href='accept.php?email=<?php echo $row['email'] ?>'><i class="fa-solid fa-check text-success"></i></a>
                 |
-								<a href='reject.php?id=<?php echo $row['spes_id'] ?>'> <i class="fa-solid fa-xmark text-danger"></i></a>
+								<a href='reject.php?email=<?php echo $row['email'] ?>'> <i class="fa-solid fa-xmark text-danger"></i></a>
 								</td>
 								<td><?php echo $userid; ?></td>
 								<td><?php echo $sname; ?></td>

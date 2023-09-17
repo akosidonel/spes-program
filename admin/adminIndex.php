@@ -37,9 +37,11 @@ include('../dbconnection/dbconnection.php');
               foreach($sql as $row){?>
               <tr>
                 <td>
-								<a href='update_user.php' target="_blank" onclick="window.open('update_user.php?id=<?=$row['spes_id'] ?>'); return false;"><i class="fa-solid fa-file-pen"></i></a>
-								 |
-								<a href="javascript:confirmDelete(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-trash text-danger"></i></a>
+								<a href='update_user.php' target="_blank" onclick="window.open('update_user.php?id=<?=$row['spes_id'] ?>'); return false;"><i class="fa-solid fa-file-pen text-success"></i></a>
+								|
+								<a href="javascript:confirmDelete(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-trash text-secondary"></i></a>
+								|
+								<a href="javascript:confirmViolation(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-bolt text-danger"></i></a>
 								</td>
                 <td><?=$row['spes_id']?></td>
 								<td><?=$row['firstName'].' '.$row['surName']?></td>				
@@ -67,6 +69,14 @@ include('../dbconnection/dbconnection.php');
 		if(confirm("Are you sure you want to delete this record?"))
 		{
 			window.location.href='delete_record.php?deluserid='+id;
+			return true;
+		}
+	}
+	function confirmViolation(id)
+	{
+		if(confirm("Are you sure you want to deactivate this account?"))
+		{
+			window.location.href='';
 			return true;
 		}
 	}
