@@ -42,7 +42,8 @@ if(isset($_POST['submit'])){
   function getData($sql){
     include('../dbconnection/dbconnection.php');
     $output="";
-    $query = mysqli_query($conn,$sql);
+    $deploymentTable = "SELECT * FROM spesaccount WHERE is_blacklist = '0'";
+    $query = mysqli_query($conn,$deploymentTable);
     if(mysqli_num_rows($query)>0){
         foreach($query as $row){
             $output .= '<tr>

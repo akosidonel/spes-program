@@ -32,7 +32,7 @@ include('../dbconnection/dbconnection.php');
 					</thead>
 					<tbody>
 					<?php
-            $sql =mysqli_query($conn, "SELECT * FROM spesaccount");
+            $sql =mysqli_query($conn, "SELECT * FROM spesaccount WHERE is_blacklist = '0' ");
             if(mysqli_num_rows($sql)){
               foreach($sql as $row){?>
               <tr>
@@ -74,9 +74,9 @@ include('../dbconnection/dbconnection.php');
 	}
 	function confirmViolation(id)
 	{
-		if(confirm("Are you sure you want to deactivate this account?"))
+		if(confirm("Add this account to blacklisted?"))
 		{
-			window.location.href='';
+			window.location.href='blacklist.php?blacklistid='+id;
 			return true;
 		}
 	}
