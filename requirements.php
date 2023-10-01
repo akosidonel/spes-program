@@ -40,7 +40,7 @@
                 <a class="nav-link" href="signup.php">Sign Up</a>
               </label>
               <li class="nav-item">
-                <a class="nav-link"  data-toggle="modal" data-target="#signinModal">Sign In</a>
+                <a href="" class="nav-link"  data-toggle="modal" data-target="#signinModal">Sign In</a>
               </li>
             </ul>
           </div>
@@ -60,7 +60,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12">
-                            <center><img class="img-fluid" src="3Logo.png"></center>
+                            <center><img class="img-fluid" src="assets/img/3Logo.png"></center>
                         </div>
                     </div>
                     <div class="row">

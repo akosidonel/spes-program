@@ -11,10 +11,14 @@ include('dbconnection/dbconnection.php');
     $result=mysqli_num_rows($sql);
     if($result>0){
         $row=mysqli_fetch_assoc($sql);
-        $_SESSION['ulogin'] = $row['spes_id'];
-        header('location:spes/home.php');
+        if($row['is_blacklist']==1){
+          echo "<script>alert('Your account is Suspended!');</script>";
+        }else{
+          $_SESSION['ulogin'] = $row['spes_id'];
+          header('location:spes/home.php');
+        }
     }else{
-        echo 'Invalid Username or Password!';
+        echo "<script>alert('Invalid Username or Password!');</script>";
     }
   } 
 ?>
@@ -56,12 +60,12 @@ include('dbconnection/dbconnection.php');
               </li>
               </ul>
               <ul class="nav justify-content-end">
-              <label class="nav-item">
+                <label class="nav-item">
                 <a class="nav-link" href="signup.php">Sign Up</a>
+                </label>
+              <label class="nav-item">
+                <a href="#" class="nav-link" data-toggle="modal" data-target="#signinModal">Sign In</a>
               </label>
-              <li class="nav-item">
-                <a href="#" class="nav-link"  data-toggle="modal" data-target="#signinModal">Sign In</a>
-              </li>
             </ul>
           </div>
         </nav>
