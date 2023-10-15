@@ -21,7 +21,7 @@
         </div>
          <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="adminIndex.php"><b>SPES Admin</b></a>
+          <a class="navbar-brand" href="dashboard.php"><b>SPES Admin</b></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

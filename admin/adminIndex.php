@@ -11,7 +11,7 @@ include('../dbconnection/dbconnection.php');
 	<div class="form-row">
 		<div class="container-fluid">
 		<div class="content">
-    <h3>Accounts</h3>
+    <h3>SPES Accounts</h3>
 				<a href='add_user.php' id="wew" target="_blank" onclick="window.open('add_user.php','pagename','resizable,height=1000,width=540'); return false;" class="btn btn-primary my-2"><i class="fa-solid fa-user-plus"></i> Add Account</a>
 			<form name="form1" method="post" action="adminIndex.php">
         <div class="table-responsive">

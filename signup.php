@@ -362,7 +362,7 @@
 </html>
 
  <?php
-  include('dbconnection/function.php');
+  include('dbconnection/dbconnection.php');
   $message1 = "Created Account Successfully!";
   $message2 = "Failed to create account!";
 
