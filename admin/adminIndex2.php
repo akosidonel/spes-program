@@ -56,9 +56,6 @@ include('../dbconnection/dbconnection.php');
 <?php include('../include/footer.php');?>
 </body>
 <script>
-var addurl = 'add_user.php';
-var demowin = 'demo_win';
-
 $(document).ready(function() {
     $('#example').DataTable( { 
         "order": [[ 0, "desc" ]],

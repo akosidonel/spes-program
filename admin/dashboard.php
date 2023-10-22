@@ -24,12 +24,17 @@ include('../dbconnection/dbconnection.php');
 		<form>
 				<div class="form-group">
 					<label>Programs & Project</label>
-					<input type="text" class="form-control" id="" placeholder="Enter Programs & Project">
+					<input type="text" class="form-control" id="program" placeholder="Enter Programs & Project">
 				</div>
-		</form>
+				<div class="form-group">
+					<label>Capacity</label>
+					<input type="number" class="form-control" id="capacity" placeholder="Enter Capacity">
+				</div>
+		
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Submit</button>
+		</form>
       </div>
     </div>
   </div>
@@ -42,31 +47,44 @@ include('../dbconnection/dbconnection.php');
 	<h4 class="mb-4" >Dashboard</h4>
 	
 	<form name="form1" method="post">
-	
 		<a href='#' class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-laptop-file"></i> Add Program</a>
 	</form>
         <div class="table-responsive">
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
           <thead>		       
 						<tr>
+							<th>Action</th>
 							<th>Batch No.</th>
 							<th>Program</th>
+							<th>Capacity</th>
 							<th>Year</th>
 							<th>Status</th>
-							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>20230812</td>
-							<td>2023SPESAUG</td>
-							<td>2023</td>
-							<td>Ongoing</td>
-							<td>
-							<i class="fa-sharp fa-solid fa-pen-to-square fa-lg text-primary"></i> | <i class="fa-sharp fa-solid fa-trash fa-lg text-danger"></i>
+					<?php
+						$sql = mysqli_query($conn, "SELECT * FROM program");
+							if(mysqli_num_rows($sql)){
+							foreach($sql as $row){?>
+							<tr>
+								<td>
+									<a href='#' target="_blank" onclick="window.open('.php?programId=<?=$row['id']?>','pagename','resizable,height=540,width=540'); return false;"><i class="fa-sharp fa-solid fa-pen-to-square fa-lg text-primary"></i></a>
+									|
+									<a href="javascript:confirmDelete(<?=$row['id']?>)"><i class="fa-sharp fa-solid fa-trash fa-lg text-danger"></i></a>
+								</td>
+								<td><?=$row['batch_number']?></td>
+								<td><?=$row['program']?></td>
+								<td><?=$row['capacity']?></td>
+								<td><?=$row['year']?></td>
+								<td><?php $stat = $row['status'];
+								 if($stat==1){?>
+									<span class="text-primary">Ongoing</span>
+									<?php }else if($stat==0){?>
+									<span class="text-success">Completed</span>
+									<?php }?>
 							</td>
-						</tr>
-					
+							</tr>
+						<?php } }?>
 					</tbody>
 					</table>
         </div>
@@ -87,6 +105,7 @@ $(document).ready(function() {
         "dom": '<"toolbar">frtip'
     } );
 } );
+
 </script>
 </html>
 

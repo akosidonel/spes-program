@@ -11,7 +11,7 @@ include('../dbconnection/dbconnection.php');
     if($result>0){
         $row=mysqli_fetch_assoc($sql);
         $_SESSION['login'] = $row['id'];
-        header('location:adminIndex.php');
+        header('location:dashboard.php');
     }else{
         echo 'Invalid Username or Password!';
     }
