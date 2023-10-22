@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2023 at 05:28 AM
+-- Generation Time: Oct 22, 2023 at 02:13 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -68,9 +68,9 @@ CREATE TABLE `deployment_history` (
 --
 
 INSERT INTO `deployment_history` (`id`, `spes_id`, `dept_id`, `date_from`, `date_to`, `dep_status`, `created_at`) VALUES
-(3, 1, '2', '2023-08-30', '2023-09-27', 1, '2023-08-26 06:49:33.000000'),
+(3, 1, '', '2023-08-30', '2023-09-27', 0, '2023-08-26 06:49:33.000000'),
 (4, 2, '', '', '', 0, '2023-08-28 06:49:33.000000'),
-(5, 3, '2', '2023-08-30', '2023-09-27', 1, '2023-08-31 01:29:18.000000'),
+(5, 3, '', '2023-08-30', '2023-09-27', 0, '2023-08-31 01:29:18.000000'),
 (6, 4, '', '', '', 0, '2023-08-31 01:29:18.000000');
 
 -- --------------------------------------------------------
@@ -94,6 +94,29 @@ CREATE TABLE `pesoadmin` (
 INSERT INTO `pesoadmin` (`id`, `username`, `password`, `full_name`, `position`) VALUES
 (1, 'admin', 'admin', 'Edward Emil', 'Programmer'),
 (2, 'donel', 'admin', 'donel martinez', 'system-ad');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `program`
+--
+
+CREATE TABLE `program` (
+  `id` int(5) NOT NULL,
+  `batch_number` varchar(30) NOT NULL,
+  `program` varchar(100) NOT NULL,
+  `capacity` int(6) NOT NULL,
+  `year` varchar(10) NOT NULL,
+  `status` int(3) NOT NULL,
+  `created_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `program`
+--
+
+INSERT INTO `program` (`id`, `batch_number`, `program`, `capacity`, `year`, `status`, `created_at`) VALUES
+(1, 'YFD-2023AUG', 'SPES PROGRAM', 50, '2023', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -149,18 +172,19 @@ CREATE TABLE `spesaccount` (
   `tectDEnd` date DEFAULT NULL,
   `historySpes` varchar(100) DEFAULT NULL,
   `historyYear` date DEFAULT NULL,
-  `spesID` int(255) DEFAULT NULL
+  `spesID` int(255) DEFAULT NULL,
+  `is_blacklist` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `spesaccount`
 --
 
-INSERT INTO `spesaccount` (`spes_id`, `username`, `password`, `surName`, `firstName`, `mName`, `status`, `gender`, `doBirth`, `poBirth`, `cShip`, `gsisBeneficiary`, `relationship`, `pAdd`, `cAdd`, `mNo`, `email`, `socialAcc`, `pStatus`, `fatherName`, `fCNo`, `fStatus`, `fOccu`, `fSalary`, `motherName`, `mCNo`, `mStatus`, `mOccu`, `mSalary`, `elemSName`, `elemDegree`, `elemYearLvl`, `elemDEnd`, `secondSName`, `secondDegree`, `secondYearLvl`, `secondDEnd`, `tertSName`, `tertDegree`, `tertYearLvl`, `tertDEnd`, `tecSName`, `tecDegree`, `tecYearLvl`, `tectDEnd`, `historySpes`, `historyYear`, `spesID`) VALUES
-(1, 'edd', 'edd112592', 'Engay', 'Edward Emil', 'Escultura', 'single', 'male', '1992-11-25', 'Manila', 'Filipino', 'Elma Engay', 'Mother', '316 LANZONES ST., SAMPALOC SITE II, BRGY. BF HOMES PARA&#65533;AQUE, CITY OF, METROPOLITAN MANILA', '316 LANZONES ST., SAMPALOC SITE II, BRGY. BF HOMES PARA&#65533;AQUE, CITY OF, METROPOLITAN MANILA', 2147483647, 'emhzhot@gmail.com', 'Edward Emil Engay', 'living', 'Eduardo Engay', 2147483647, 'fnone', 0, 15000, 'Elma Engay', 1987654321, 'mnone', 'Housewife', 0, 'SSIIES', '6 years', '0000-00-00', '0000-00-00', 'PNHS MAIN', '4 years', '0000-00-00', '0000-00-00', 'PUP ParaÃ±aque', 'BSIT', '0000-00-00', '0000-00-00', 'PCCST', 'Assoc. IT', '0000-00-00', '0000-00-00', 'one', '0000-00-00', 25),
-(2, 'donel', '123456', 'Martinez', 'Donel', 'Escultura', 'single', 'male', '1992-11-25', 'Manila', 'Filipino', 'Elma Engay', 'Mother', '', '', 2147483647, 'emhzhot@gmail.com', 'Edward Emil Engay', 'living', 'Eduardo Engay', 2147483647, 'fnone', 0, 15000, 'Elma Engay', 1987654321, 'mnone', 'Housewife', 0, 'SSIIES', '6 years', '0000-00-00', '0000-00-00', 'PNHS MAIN', '4 years', '0000-00-00', '0000-00-00', 'PUP ParaÃ±aque', 'BSHM', '0000-00-00', '0000-00-00', 'PCCST', 'Assoc. IT', '0000-00-00', '0000-00-00', 'one', '0000-00-00', 25),
-(3, 'jerome', '12345', 'Alimpongat', 'Jerome', 'Agila', 'single', 'male', '2023-08-21', '', '', '', '', '', '', 0, 'jerome@gmail.com', '', '', '', 0, '', 0, 0, '', 0, '', '', 0, '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', 'BSBA', '0000-00-00', '0000-00-00', '', 'BSBA', '0000-00-00', '0000-00-00', '', '0000-00-00', 2345),
-(4, 'joyce', '12345', 'Buergo', 'Joycelyn', 'C', 'single', 'female', '2023-08-16', '', '', '', '', '', '', 0, 'joycelyn@gmail.com', '', '', '', 0, '', 0, 0, '', 0, '', '', 0, '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', 'BSIT', '0000-00-00', '0000-00-00', '', 'BSIT', '0000-00-00', '0000-00-00', '', '0000-00-00', 3722);
+INSERT INTO `spesaccount` (`spes_id`, `username`, `password`, `surName`, `firstName`, `mName`, `status`, `gender`, `doBirth`, `poBirth`, `cShip`, `gsisBeneficiary`, `relationship`, `pAdd`, `cAdd`, `mNo`, `email`, `socialAcc`, `pStatus`, `fatherName`, `fCNo`, `fStatus`, `fOccu`, `fSalary`, `motherName`, `mCNo`, `mStatus`, `mOccu`, `mSalary`, `elemSName`, `elemDegree`, `elemYearLvl`, `elemDEnd`, `secondSName`, `secondDegree`, `secondYearLvl`, `secondDEnd`, `tertSName`, `tertDegree`, `tertYearLvl`, `tertDEnd`, `tecSName`, `tecDegree`, `tecYearLvl`, `tectDEnd`, `historySpes`, `historyYear`, `spesID`, `is_blacklist`) VALUES
+(1, 'edd', 'edd112592', 'Engay', 'Edward Emil', 'Escultura', 'single', 'male', '1992-11-25', 'Manila', 'Filipino', 'Elma Engay', 'Mother', '316 LANZONES ST., SAMPALOC SITE II, BRGY. BF HOMES PARA&#65533;AQUE, CITY OF, METROPOLITAN MANILA', '316 LANZONES ST., SAMPALOC SITE II, BRGY. BF HOMES PARA&#65533;AQUE, CITY OF, METROPOLITAN MANILA', 2147483647, 'emhzhot@gmail.com', 'Edward Emil Engay', 'living', 'Eduardo Engay', 2147483647, 'fnone', 0, 15000, 'Elma Engay', 1987654321, 'mnone', 'Housewife', 0, 'SSIIES', '6 years', '0000-00-00', '0000-00-00', 'PNHS MAIN', '4 years', '0000-00-00', '0000-00-00', 'PUP ParaÃ±aque', 'BSIT', '0000-00-00', '0000-00-00', 'PCCST', 'Assoc. IT', '0000-00-00', '0000-00-00', 'one', '0000-00-00', 25, 0),
+(2, 'donel', '123456', 'Martinez', 'Donel', 'Escultura', 'single', 'male', '1990-12-19', 'Manila', 'Filipino', 'Elma Engay', 'Mother', '', '', 2147483647, 'reydonelmartinez@gmail.com', 'Edward Emil Engay', 'living', 'Eduardo Engay', 2147483647, 'fnone', 0, 15000, 'Elma Engay', 1987654321, 'mnone', 'Housewife', 0, 'SSIIES', '6 years', '0000-00-00', '0000-00-00', 'PNHS MAIN', '4 years', '0000-00-00', '0000-00-00', 'PUP ParaÃ±aque', 'BSHM', '0000-00-00', '0000-00-00', 'PCCST', 'Assoc. IT', '0000-00-00', '0000-00-00', 'one', '0000-00-00', 0, 0),
+(3, 'jerome', '12345', 'Alimpongat', 'Jerome', 'Agila', 'single', 'male', '2023-08-21', '', '', '', '', '', '', 0, 'jerome@gmail.com', '', '', '', 0, '', 0, 0, '', 0, '', '', 0, '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', 'BSBA', '0000-00-00', '0000-00-00', '', 'BSBA', '0000-00-00', '0000-00-00', '', '0000-00-00', 2345, 0),
+(4, 'joyce', '12345', 'Buergo', 'Joycelyn', 'C', 'single', 'female', '2023-08-16', '', '', '', '', '', '', 0, 'joycelyn@gmail.com', '', '', '', 0, '', 0, 0, '', 0, '', '', 0, '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', 'BSIT', '0000-00-00', '0000-00-00', '', 'BSIT', '0000-00-00', '0000-00-00', '', '0000-00-00', 3722, 1);
 
 -- --------------------------------------------------------
 
@@ -242,6 +266,12 @@ ALTER TABLE `pesoadmin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `program`
+--
+ALTER TABLE `program`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `spesaccount`
 --
 ALTER TABLE `spesaccount`
@@ -268,6 +298,12 @@ ALTER TABLE `deployment_history`
 --
 ALTER TABLE `pesoadmin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `program`
+--
+ALTER TABLE `program`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `spesaccount`
