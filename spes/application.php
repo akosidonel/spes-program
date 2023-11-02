@@ -17,15 +17,15 @@ $total = $query['total'];
 <hr>
 <div class="container">
 <div class="card mb-4">
-  <h5 class="card-header">Bulletin board <?php echo htmlentities($total)?></h5>
+  <h5 class="card-header">Dashboard</h5>
   <div class="card-body">
       <?php 
-       $result = mysqli_query($conn, "SELECT status FROM program WHERE status=1");
+       $result = mysqli_query($conn, "SELECT status,batch_number FROM program WHERE status=1");
        if(mysqli_num_rows($result)){
         foreach($result as $row){
-              $spesid = mysqli_query($conn, "SELECT dep_status FROM deployment_history WHERE spes_id = '$id' ");
+              $spesid = mysqli_query($conn, "SELECT d.dep_status as stat,d.batch_number,d.spes_id,p.batch_number,p.status FROM deployment_history as d JOIN program as p ON d.batch_number=p.batch_number WHERE d.spes_id = '$id' AND p.status=1 ");
               $spesStatQuery = mysqli_fetch_array($spesid);  
-              $spesStat = $spesStatQuery['dep_status'];
+              $spesStat = $spesStatQuery['stat'];
               if($spesStat==''){?>  
                           <p class="card-text">Special Program for Employment of Students (SPES) is now open.<a href="#" class="text-primary"> Click Here to apply</a></p>
                 <?php } elseif($spesStat==1) { ?>
@@ -37,15 +37,15 @@ $total = $query['total'];
                 <?php } elseif($spesStat==4) {?>
                           <p class="card-text text-success">Deployed..</p>
                 <?php } elseif($spesStat==5) {?>
-                          <p class="card-text text-warning">End contract..</p>
+                          <p class="card-text text-black">End contract.. Thank you</p>
                 <?php } ?>
 
                 <?php } } else{?>
-                          <p class="card-text text-secondary">Special Program for Employment of Students (SPES) are now closed / not yet open! please wait for further announcement on our Official Facebook page..</p>
+                          <p class="card-text text-secondary">Special Program for Employment of Students (SPES) are now closed / not yet open! please wait for further announcement on our Official Facebook page thank you..</p>
         <?php }?>
   </div>
 </div>
-<h5>History</h5>
+<h5>Application History</h5>
 <br>
    <div class="table-responsive-md">
   <table class="table">
@@ -69,9 +69,9 @@ $total = $query['total'];
                 <td><?=$rows['program']?></td>
                 <td><?php $stat=$rows['dep_status'];
                   if($stat==5){?>
-                      <span class="badge badge-success">End Contract</span>
+                      <span class="badge badge-success">END CONTRACT</span>
           <?php } elseif($stat==3)  { ?>
-                      <span class="badge badge-danger">Rejected</span>
+                      <span class="badge badge-danger">REJECTED</span>
           <?php }?>
                 </td>
             </tr>
