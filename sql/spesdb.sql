@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2023 at 02:13 PM
+-- Generation Time: Nov 02, 2023 at 08:15 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -57,6 +57,7 @@ CREATE TABLE `deployment_history` (
   `id` int(6) NOT NULL,
   `spes_id` int(6) NOT NULL,
   `dept_id` varchar(3) DEFAULT NULL,
+  `batch_number` varchar(30) NOT NULL,
   `date_from` varchar(20) NOT NULL,
   `date_to` varchar(20) NOT NULL,
   `dep_status` int(2) NOT NULL DEFAULT 0,
@@ -67,11 +68,11 @@ CREATE TABLE `deployment_history` (
 -- Dumping data for table `deployment_history`
 --
 
-INSERT INTO `deployment_history` (`id`, `spes_id`, `dept_id`, `date_from`, `date_to`, `dep_status`, `created_at`) VALUES
-(3, 1, '', '2023-08-30', '2023-09-27', 0, '2023-08-26 06:49:33.000000'),
-(4, 2, '', '', '', 0, '2023-08-28 06:49:33.000000'),
-(5, 3, '', '2023-08-30', '2023-09-27', 0, '2023-08-31 01:29:18.000000'),
-(6, 4, '', '', '', 0, '2023-08-31 01:29:18.000000');
+INSERT INTO `deployment_history` (`id`, `spes_id`, `dept_id`, `batch_number`, `date_from`, `date_to`, `dep_status`, `created_at`) VALUES
+(3, 1, '', 'YFD-2025AUG', '2023-08-30', '2023-09-27', 1, '2023-08-26 06:49:33.000000'),
+(5, 3, '', 'YFD-2025AUG', '2023-08-30', '2023-09-27', 1, '2023-08-31 01:29:18.000000'),
+(14, 4, NULL, 'YFD-2025AUG', '', '', 1, '2022-11-01 01:15:16.000000'),
+(15, 2, NULL, 'YFD-2021AUG', '', '', 5, '0000-00-00 00:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -116,7 +117,11 @@ CREATE TABLE `program` (
 --
 
 INSERT INTO `program` (`id`, `batch_number`, `program`, `capacity`, `year`, `status`, `created_at`) VALUES
-(1, 'YFD-2023AUG', 'SPES PROGRAM', 50, '2023', 1, 1);
+(1, 'YFD-2023AUG', 'SPES PROGRAM', 3, '2023', 0, 1),
+(2, 'YFD-2022JUNE', 'SPES PROGRAM', 20, '2022', 0, 1),
+(4, 'YFD-2021AUG', 'SPES PROGRAM', 10, '2021', 0, 1),
+(5, 'YFD-2024JUNE', 'SPES PROGRAM', 10, '2024', 0, 1),
+(6, 'YFD-2025AUG', 'SPES PROGRAM', 4, '2025', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -291,7 +296,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `deployment_history`
 --
 ALTER TABLE `deployment_history`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `pesoadmin`
@@ -303,7 +308,7 @@ ALTER TABLE `pesoadmin`
 -- AUTO_INCREMENT for table `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `spesaccount`
