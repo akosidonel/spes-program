@@ -45,9 +45,7 @@ $total = $query['total'];
                 <?php } elseif($spesStat==5) {?>
                           <p class="card-text text-black">End contract.. Thank you</p>
                 <?php } ?>
-
-               
-
+                
                 <?php } } } else{?>
                           <p class="card-text text-secondary">Special Program for Employment of Students (SPES) are now closed / not yet open! please wait for further announcement on our Official Facebook page thank you..</p>
         <?php }?>
