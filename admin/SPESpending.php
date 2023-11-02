@@ -9,26 +9,21 @@ include('../dbconnection/dbconnection.php');
  }else { ?>
 <?php $title = 'Spes Pending'; include('../include/header.php');?>
 	<div class="form-row">
-		<div class="container-fluid">
+		<div class="container">
 		<div class="content">
 			<form name="form1" method="post" action="SPESpending.php">
-				<h3>Accounts</h3>
+				<h3>SPES Application</h3>
             <div class="table-responsive">
             <table id="example" class="display table-striped" style="width:100%; height: 100%;">
             		<thead>		       
 						<tr>
 							<th>Action</th>
-							<th>Spes ID#</th>
 							<th>Surname</th>
 							<th>First Name</th>
-							<th>Username</th>
-							<th>Password</th>
               				<th>Email</th>
-							<th>Status</th>
 							<th>Gender</th>
 							<th>Date of Birth</th>
 							<th>Spes Availment</th>
-							<th>Year Availed</th>
 							<th>Course</th>
 						</tr>
 					  </thead>
@@ -36,18 +31,13 @@ include('../dbconnection/dbconnection.php');
 						<?php
 						$result = mysqli_query($conn, "SELECT * FROM spesaccount"); 
 						while($row=mysqli_fetch_array($result)) 
-						{ 
-							$userid = $row['spes_id'];						
+						{ 					
 							$sname = $row['surName'];
 							$fname = $row['firstName'];
-							$username = $row['username'];
-							$userpass = $row['password'];
               				$email = $row['email'];
-							$stat = $row['status'];
 							$gender = $row['gender'];
 							$dob = $row['doBirth'];
 							$hspes = $row['historySpes'];
-							$hyear = $row['historyYear'];
 							$tdegree = $row['tertDegree'];
 							?>
 							<tr>
@@ -56,17 +46,12 @@ include('../dbconnection/dbconnection.php');
                 |
 								<a href='reject.php?email=<?php echo $row['email'] ?>'> <i class="fa-solid fa-xmark text-danger"></i></a>
 								</td>
-								<td><?php echo $userid; ?></td>
 								<td><?php echo $sname; ?></td>
 								<td><?php echo $fname; ?></td>
-								<td><?php echo $username; ?></td>
-								<td><?php echo $userpass; ?></td>
-                				<td><?php echo $email; ?></td>
-								<td><?php echo $stat; ?></td>								
+                				<td><?php echo $email; ?></td>								
 								<td><?php echo $gender; ?></td>
 								<td><?php echo $dob; ?></td>
 								<td><?php echo $hspes; ?></td>
-								<td><?php echo $hyear; ?></td>
 								<td><?php echo $tdegree; ?></td>
 							</tr>
 

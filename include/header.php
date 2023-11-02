@@ -21,7 +21,7 @@
         </div>
          <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="dashboard.php"><b>SPES Admin</b></a>
+          <a class="navbar-brand" href="dashboard.php"><b>Dashboard</b></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -31,14 +31,14 @@
                 <a class="nav-link" href="adminIndex.php">SPES Accounts</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="adminIndex2.php">Admin Account</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="SPESpending.php">SPES Pending Accounts</a>
+                <a class="nav-link" href="SPESpending.php">SPES Application</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="spesDeployment.php">SPES Deployment</a>
               </li>  
+              <li class="nav-item">
+                <a class="nav-link" href="adminIndex2.php">Admin Account</a>
+              </li>
               </ul>
               <ul class="nav justify-content-end">
               <li class="nav-item">

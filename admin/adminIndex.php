@@ -9,25 +9,21 @@ include('../dbconnection/dbconnection.php');
 
 <?php $title = 'Spes Account'; include('../include/header.php');?>
 	<div class="form-row">
-		<div class="container-fluid">
+		<div class="container">
 		<div class="content">
     <h3>SPES Accounts</h3>
 				<a href='add_user.php' id="wew" target="_blank" onclick="window.open('add_user.php','pagename','resizable,height=1000,width=540'); return false;" class="btn btn-primary my-2"><i class="fa-solid fa-user-plus"></i> Add Account</a>
 			<form name="form1" method="post" action="adminIndex.php">
         <div class="table-responsive">
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
-          <thead>		       
+          			<thead>		       
 						<tr>
 							<th>Action</th>
-							<th>Spes ID#</th>
-							<th>Name</th>
 							<th>Username</th>
-							<th>Status</th>
-							<th>Gender</th>
+							<th>Name</th>
 							<th>Date of Birth</th>
-							<th>Spes Availment</th>
-							<th>Year Availed</th>
 							<th>Course</th>
+							<th>Status</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -43,15 +39,11 @@ include('../dbconnection/dbconnection.php');
 								|
 								<a href="javascript:confirmViolation(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-bolt text-danger"></i></a>
 								</td>
-                <td><?=$row['spes_id']?></td>
-								<td><?=$row['firstName'].' '.$row['surName']?></td>				
 								<td><?=$row['username']?></td>
-								<td><?=$row['status']?></td>
-								<td><?=$row['gender']?></td>
+								<td><?=$row['firstName'].' '.$row['surName']?></td>				
 								<td><?=$row['doBirth']?></td>
-								<td><?=$row['historySpes']?></td>
-								<td><?=$row['historyYear']?></td>
 								<td><?=$row['tecDegree']?></td>
+								<td><?=$row['status']?></td>
               </tr>
           <?php }}?>
 					</tbody>
