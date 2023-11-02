@@ -20,9 +20,15 @@ $total = $query['total'];
   <h5 class="card-header">Dashboard</h5>
   <div class="card-body">
       <?php 
-       $result = mysqli_query($conn, "SELECT status,batch_number FROM program WHERE status=1");
+       $result = mysqli_query($conn, "SELECT status,batch_number,capacity FROM program WHERE status=1");
+       $capacity = mysqli_fetch_array($result);
+       $totalCapacity = $capacity['capacity'];
        if(mysqli_num_rows($result)){
-        foreach($result as $row){
+          if($total>=$totalCapacity){?>
+            <p class="card-text text-dark">Application process for Special Program for Employment of Students (SPES) is ongoing. No slot available at the moment try again later</p>
+
+        <?php  }else{
+            foreach($result as $row){
               $spesid = mysqli_query($conn, "SELECT d.dep_status as stat,d.batch_number,d.spes_id,p.batch_number,p.status FROM deployment_history as d JOIN program as p ON d.batch_number=p.batch_number WHERE d.spes_id = '$id' AND p.status=1 ");
               $spesStatQuery = mysqli_fetch_array($spesid);  
               $spesStat = $spesStatQuery['stat'];
@@ -40,7 +46,9 @@ $total = $query['total'];
                           <p class="card-text text-black">End contract.. Thank you</p>
                 <?php } ?>
 
-                <?php } } else{?>
+               
+
+                <?php } } } else{?>
                           <p class="card-text text-secondary">Special Program for Employment of Students (SPES) are now closed / not yet open! please wait for further announcement on our Official Facebook page thank you..</p>
         <?php }?>
   </div>
