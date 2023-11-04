@@ -20,7 +20,7 @@ include('../dbconnection/dbconnection.php');
 <link rel="stylesheet" href="../assets/css/eventsStyle.css">
 
 
-    <title>SPES-PESO About</title>
+    <title>About</title>
   </head>
   <body>
       <div class="footer">
@@ -29,7 +29,7 @@ include('../dbconnection/dbconnection.php');
   <!--NAV BAR-->
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="navbar-brand" href="home.php"><b>SPES</b></a>
+          <a class="navbar-brand" href="dashboard.php"><b>Dashboard</b></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -39,12 +39,6 @@ include('../dbconnection/dbconnection.php');
               <li class="nav-item">
                 <a class="nav-link" href="profile.php">Profile</a>
               </li>
-<!--               <li class="nav-item">
-                <a class="nav-link" href="#">Check Application</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="events.html">Events</a>
-              </li> -->
               <li class="nav-item">
                 <a class="nav-link" href="about.php">About</a>
               </li>

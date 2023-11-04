@@ -15,7 +15,7 @@ include('dbconnection/dbconnection.php');
           echo "<script>alert('Your account is Suspended!');</script>";
         }else{
           $_SESSION['ulogin'] = $row['spes_id'];
-          header('location:spes/home.php');
+          header('location:spes/dashboard.php');
         }
     }else{
         echo "<script>alert('Invalid Username or Password!');</script>";

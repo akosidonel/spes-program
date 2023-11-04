@@ -6,9 +6,7 @@ include('../dbconnection/dbconnection.php');
    header('Location:index.php');
    exit();
  }else { $id = $_SESSION['ulogin'];?>
-
 <?php $title = 'Application'; include('../include/spesheader.php');?>
-
 <?php 
 $sql = mysqli_query($conn, "SELECT COUNT(dep_status) as total FROM deployment_history WHERE dep_status = 1  ");
 $query = mysqli_fetch_array($sql);
@@ -23,17 +21,17 @@ $total = $query['total'];
        $result = mysqli_query($conn, "SELECT status,batch_number,capacity FROM program WHERE status=1");
        $capacity = mysqli_fetch_array($result);
        $totalCapacity = $capacity['capacity'];
+       $batchNumber = $capacity['batch_number'];
        if(mysqli_num_rows($result)){
           if($total>=$totalCapacity){?>
             <p class="card-text text-dark">Application process for Special Program for Employment of Students (SPES) is ongoing. No slot available at the moment try again later</p>
-
         <?php  }else{
             foreach($result as $row){
               $spesid = mysqli_query($conn, "SELECT d.dep_status as stat,d.batch_number,d.spes_id,p.batch_number,p.status FROM deployment_history as d JOIN program as p ON d.batch_number=p.batch_number WHERE d.spes_id = '$id' AND p.status=1 ");
-              $spesStatQuery = mysqli_fetch_array($spesid);  
+              $spesStatQuery = mysqli_fetch_array($spesid); 
               $spesStat = $spesStatQuery['stat'];
               if($spesStat==''){?>  
-                          <p class="card-text">Special Program for Employment of Students (SPES) is now open.<a href="#" class="text-primary"> Click Here to apply</a></p>
+                          <p class="card-text">Special Program for Employment of Students (SPES) is now open.<a href="#" class="text-primary" data-toggle="modal" data-target="#ApplicationModal"> Click Here to apply</a></p>
                 <?php } elseif($spesStat==1) { ?>
                           <p class="card-text text-secondary">Your application is now processing..</p>
                 <?php } elseif($spesStat==2) {?>
@@ -43,9 +41,8 @@ $total = $query['total'];
                 <?php } elseif($spesStat==4) {?>
                           <p class="card-text text-success">Deployed..</p>
                 <?php } elseif($spesStat==5) {?>
-                          <p class="card-text text-black">End contract.. Thank you</p>
+                          <p class="card-text text-black">Your contract has been finished! we look forward for your next application, see you and goodluck!</p>
                 <?php } ?>
-                
                 <?php } } } else{?>
                           <p class="card-text text-secondary">Special Program for Employment of Students (SPES) are now closed / not yet open! please wait for further announcement on our Official Facebook page thank you..</p>
         <?php }?>
@@ -71,11 +68,11 @@ $total = $query['total'];
       foreach($history as $rows){?>
             <tr>
                 <td><?=$rows['batch_number']?></td>
-                <td><?=$rows['year']?></td>
                 <td><?=$rows['program']?></td>
+                <td><?=$rows['year']?></td>
                 <td><?php $stat=$rows['dep_status'];
                   if($stat==5){?>
-                      <span class="badge badge-success">END CONTRACT</span>
+                      <span class="badge badge-success">FINISHED</span>
           <?php } elseif($stat==3)  { ?>
                       <span class="badge badge-danger">REJECTED</span>
           <?php }?>
@@ -88,7 +85,51 @@ $total = $query['total'];
   </table>
 </div>
 </div>
-<?php include('../include/spesfooter')?>
+
+<!--Application Modal -->
+<div class="modal fade" id="ApplicationModal" data-backdrop="static" tabindex="-1" aria-labelledby="ApplicationModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Spes Application</h5>
+      </div>
+      <div class="modal-body">
+        Do you want to apply for a Special Program for Employment of Students (SPES)?
+        <form id="app_form" method="POST" enctype="multipart/form-data">
+          <input type="hidden" value="<?php echo $id ?>" name="id" id="id">
+          <input type="hidden" value="<?php echo $batchNumber ?>" name="batch_number" id="batch_number">
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-primary">Yes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<?php include('../include/spesfooter.php')?>
+<script>
+   $(document).on('submit', '#app_form', function(e){
+    e.preventDefault();
+    var fd = new FormData(this);
+    fd.append("save_app",true);
+    $.ajax({
+      type:"POST",
+      url: "../view/view.php",
+      data: fd,
+      processData: false,
+      contentType: false,
+      success:function(response){
+        var res = jQuery.parseJSON(response);
+        if(res.status == 200){
+              $('#ApplicationModal').modal('hide');
+              location.reload();
+        }
+      }
+    });
+   });
+</script>
 </body>
 </html>
+
 <?php }?>

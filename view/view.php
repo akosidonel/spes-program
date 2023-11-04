@@ -61,3 +61,29 @@ if(isset($_POST['submit'])){
     }
     echo $output;
 }
+
+//apply spes application
+if (isset($_POST['save_app'])) {
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
+    $batchNumber = mysqli_real_escape_string($conn, $_POST['batch_number']);
+    $stat=1;
+
+    $sql = "INSERT INTO deployment_history (spes_id,batch_number,dep_status) VALUES('$id','$batchNumber','$stat')";
+    $query = mysqli_query($conn, $sql);
+
+    if ($query) {
+        $res = [
+            'status' => 200,
+            'message' => 'Added successfully!.',
+        ];
+        echo json_encode($res);
+        return false;
+    } else {
+        $res = [
+            'status' => 500,
+            'message' => 'opps..something went wrong..',
+        ];
+        echo json_encode($res);
+        return false;
+    }
+}
