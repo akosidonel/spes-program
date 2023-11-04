@@ -6,7 +6,8 @@ include('../dbconnection/dbconnection.php');
  if(!isset($_SESSION['login'])){
    header('Location:index.php');
    exit();
- }else { ?>
+ }else { $id = $_SESSION['login']; ?>
+
 <?php $title = 'Spes Pending'; include('../include/header.php');?>
 	<div class="form-row">
 		<div class="container">
@@ -18,27 +19,26 @@ include('../dbconnection/dbconnection.php');
             		<thead>		       
 						<tr>
 							<th>Action</th>
-							<th>Surname</th>
 							<th>First Name</th>
-              				<th>Email</th>
 							<th>Gender</th>
 							<th>Date of Birth</th>
-							<th>Spes Availment</th>
 							<th>Course</th>
+							<th>No. of Availment</th>
 						</tr>
 					  </thead>
 					<tbody>
 						<?php
-						$result = mysqli_query($conn, "SELECT * FROM spesaccount"); 
+						$result = mysqli_query($conn, "SELECT  (SELECT COUNT(dep_status) FROM deployment_history WHERE dep_status=5 GROUP BY spes_id) as avail, s.spes_id,s.surName,s.firstName,s.email,s.gender,s.doBirth,s.tertDegree,d.spes_id 
+						FROM deployment_history as d JOIN spesaccount as s ON d.spes_id=s.spes_id WHERE d.dep_status=1 GROUP BY d.spes_id"); 
 						while($row=mysqli_fetch_array($result)) 
 						{ 					
-							$sname = $row['surName'];
-							$fname = $row['firstName'];
+							$name = $row['firstName'].' '.$row['surName'];
               				$email = $row['email'];
 							$gender = $row['gender'];
 							$dob = $row['doBirth'];
-							$hspes = $row['historySpes'];
 							$tdegree = $row['tertDegree'];
+							$avail = $row['avail'];
+
 							?>
 							<tr>
 								<td>
@@ -46,13 +46,11 @@ include('../dbconnection/dbconnection.php');
                 |
 								<a href='reject.php?email=<?php echo $row['email'] ?>'> <i class="fa-solid fa-xmark text-danger"></i></a>
 								</td>
-								<td><?php echo $sname; ?></td>
-								<td><?php echo $fname; ?></td>
-                				<td><?php echo $email; ?></td>								
+								<td><?php echo $name; ?></td>					
 								<td><?php echo $gender; ?></td>
 								<td><?php echo $dob; ?></td>
-								<td><?php echo $hspes; ?></td>
 								<td><?php echo $tdegree; ?></td>
+								<td><?php echo $avail; ?></td>
 							</tr>
 
 							<?php
