@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2023 at 08:15 AM
+-- Generation Time: Nov 04, 2023 at 11:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -70,9 +70,10 @@ CREATE TABLE `deployment_history` (
 
 INSERT INTO `deployment_history` (`id`, `spes_id`, `dept_id`, `batch_number`, `date_from`, `date_to`, `dep_status`, `created_at`) VALUES
 (3, 1, '', 'YFD-2025AUG', '2023-08-30', '2023-09-27', 1, '2023-08-26 06:49:33.000000'),
-(5, 3, '', 'YFD-2025AUG', '2023-08-30', '2023-09-27', 1, '2023-08-31 01:29:18.000000'),
-(14, 4, NULL, 'YFD-2025AUG', '', '', 1, '2022-11-01 01:15:16.000000'),
-(15, 2, NULL, 'YFD-2021AUG', '', '', 5, '0000-00-00 00:00:00.000000');
+(5, 2, '', 'YFD-2023AUG', '2023-08-30', '2023-09-27', 5, '2023-08-31 01:29:18.000000'),
+(14, 2, NULL, 'YFD-2022JUNE', '', '', 3, '2022-11-01 01:15:16.000000'),
+(15, 2, NULL, 'YFD-2021AUG', '', '', 5, '0000-00-00 00:00:00.000000'),
+(21, 2, NULL, 'YFD-2025AUG', '', '', 1, '2023-11-04 05:13:18.937970');
 
 -- --------------------------------------------------------
 
@@ -121,7 +122,7 @@ INSERT INTO `program` (`id`, `batch_number`, `program`, `capacity`, `year`, `sta
 (2, 'YFD-2022JUNE', 'SPES PROGRAM', 20, '2022', 0, 1),
 (4, 'YFD-2021AUG', 'SPES PROGRAM', 10, '2021', 0, 1),
 (5, 'YFD-2024JUNE', 'SPES PROGRAM', 10, '2024', 0, 1),
-(6, 'YFD-2025AUG', 'SPES PROGRAM', 4, '2025', 0, 1);
+(6, 'YFD-2025AUG', 'SPES PROGRAM', 4, '2025', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -296,7 +297,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `deployment_history`
 --
 ALTER TABLE `deployment_history`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `pesoadmin`
