@@ -41,8 +41,8 @@
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Downloadable Forms</a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">            
-                      <li><a class="dropdown-item" href="/SPES/SPESforms" download="SPES FORM 2.pdf">SPES FORM 2</a></li>
-                      <li><a class="dropdown-item" href="/SPES/SPESforms" download="NSRP.pdf">NSRP</a></li>
+                      <li><a class="dropdown-item" href="../extra files/" download="SPES FORM-2.pdf">SPES FORM 2</a></li>
+                      <li><a class="dropdown-item" href="../extra files/" download="NSRP FORM-1.pdf">NSRP</a></li>
                       <li><a class="dropdown-item" href="/SPES/SPESforms" download="PESO AUTHORIZATION LETTER.pdf">PESO AUTHORIZATION LETTER</a></li>
                     </ul>
               </li>  

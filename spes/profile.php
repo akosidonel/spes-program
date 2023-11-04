@@ -19,7 +19,7 @@ include('../dbconnection/dbconnection.php');
 <hr>
 <div class="form-group">
 <div class="container">    
-    <h1>Student Profile</h1>
+    <h1>SPES Profile</h1>
     <br>
       <form action="editProfile.php" method="POST">
         <h6>Personal Information</h6>
@@ -251,25 +251,6 @@ include('../dbconnection/dbconnection.php');
         </div>
         </div>
         <br><br>
-        <div class="form-row">
-        <div class="col-sm-4">
-          <label class="col-form-label" for="spesAvail">History of SPES Availment:</label>
-          <select name="spesAvail" class="form-control" value="<?php echo $row['historySpes']; ?>">
-          <option value="one">1st Availment</option>
-          <option value="two">2nd Availment</option>
-          <option value="three">3rd Availment</option>
-          <option value="four">4th Availment</option>
-          </select>
-        </div>
-        <div class="col">
-          <label class="col-form-label" for="spesYear">Year:</label>
-          <input type="text" class="form-control" name="spesYear" value="<?php echo $row['historyYear']; ?>">
-        </div>
-        <div class="col">
-          <label class="col-form-label" for="spesID">SPES ID No.:</label>
-          <input type="text" class="form-control" name="spesID" value="<?php echo $row['spesID']; ?>">
-        </div>
-        </div>
         <br>
         <div class="form-row">
         <div class="col-5">

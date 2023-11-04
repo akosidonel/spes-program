@@ -6,7 +6,7 @@ include('../dbconnection/dbconnection.php');
    header('Location:index.php');
    exit();
  }else { $id = $_SESSION['ulogin'];?>
-<?php $title = 'Application'; include('../include/spesheader.php');?>
+<?php $title = 'Dashboard'; include('../include/spesheader.php');?>
 <?php 
 $sql = mysqli_query($conn, "SELECT COUNT(dep_status) as total FROM deployment_history WHERE dep_status = 1  ");
 $query = mysqli_fetch_array($sql);
