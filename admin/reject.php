@@ -13,10 +13,14 @@ require '../vendor/autoload.php';
 
 //Instantiation and passing `true` enables exceptions
 
-$email = $_GET['email'];
+$id = $_GET['id'];
 $message1 = "Account has been verified!";
 $message2 = "Failed to accept!";
 $mail = new PHPMailer(true);
+$sql = mysqli_query($conn,"SELECT s.spes_id,s.email,d.spes_id,d.batch_number,d.dep_status FROM spesaccount AS s JOIN deployment_history as d
+ON s.spes_id=d.spes_id where s.spes_id='$id' AND d.dep_status=1"); 
+$row = mysqli_fetch_array($sql);
+$email = $row['email'];
 
   try {
     //Server settings
@@ -43,6 +47,9 @@ $mail = new PHPMailer(true);
 
     $mail->send();
     echo 'Message has been sent';
+    $stat = 3;
+    $update = mysqli_query($conn, "UPDATE deployment_history SET dep_status='$stat' WHERE spes_id='$id' AND dep_status=1 ");
+    header('location:SPESpending.php');
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }

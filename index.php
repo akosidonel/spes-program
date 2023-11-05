@@ -11,11 +11,18 @@ include('dbconnection/dbconnection.php');
     $result=mysqli_num_rows($sql);
     if($result>0){
         $row=mysqli_fetch_assoc($sql);
+        $id = $row['spes_id'];
         if($row['is_blacklist']==1){
           echo "<script>alert('Your account is Suspended!');</script>";
         }else{
-          $_SESSION['ulogin'] = $row['spes_id'];
-          header('location:spes/dashboard.php');
+          $results = mysqli_query($conn, "SELECT COUNT(dep_status=5) as stat, spes_id FROM deployment_history WHERE dep_status =5 AND spes_id=$id ");
+          $rows=mysqli_fetch_assoc($results);
+          if($rows['stat']<4){
+            $_SESSION['ulogin'] = $rows['spes_id'];
+            header('location:spes/dashboard.php');
+          }else{
+            echo "<script>alert('You reach the maximum limit of availment and no longer eligible to this program! Thank you');</script>";
+          }
         }
     }else{
         echo "<script>alert('Invalid Username or Password!');</script>";

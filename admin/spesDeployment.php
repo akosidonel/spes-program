@@ -49,7 +49,13 @@ include('../dbconnection/dbconnection.php');
           </table>
           </div>
           <div class="row mb-3 mt-4">
+            <?php 
+             $result=mysqli_query($conn,"SELECT batch_number FROM program WHERE status=1"); 
+             $row = mysqli_fetch_array($result);
+             $batch_number = $row['batch_number'];
+            ?>
           <div class="col-6">
+            <input type="hidden" value="<?php echo htmlentities($batch_number)?>" name="batch_number" id="batch_number">
           <label class="col-form-label">Department</label>
           <select class="form-control" name='dept' required>
               <option value="">Select..</option>    

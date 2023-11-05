@@ -37,9 +37,9 @@ $total = $query['total'];
                 <?php } elseif($spesStat==2) {?>
                           <p class="card-text text-primary">Your application has been approved! check your email...</p>
                 <?php } elseif($spesStat==3) {?>
-                          <p class="card-text text-danger">Sorry your application has been rejected! contact peso admin..</p>
+                          <p class="card-text text-danger">Sorry your application has been rejected! check your email..</p>
                 <?php } elseif($spesStat==4) {?>
-                          <p class="card-text text-success">Deployed..</p>
+                          <p class="card-text text-success">Congratulations you are Hired!..</p>
                 <?php } elseif($spesStat==5) {?>
                           <p class="card-text text-black">Your contract has been finished! we look forward for your next application, see you and goodluck!</p>
                 <?php } ?>

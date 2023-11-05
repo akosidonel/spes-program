@@ -8,7 +8,7 @@ include('../dbconnection/dbconnection.php');
    exit();
  }else { $id = $_SESSION['login']; ?>
 
-<?php $title = 'Spes Pending'; include('../include/header.php');?>
+<?php $title = 'Spes Application'; include('../include/header.php');?>
 	<div class="form-row">
 		<div class="container">
 		<div class="content">
@@ -23,12 +23,11 @@ include('../dbconnection/dbconnection.php');
 							<th>Gender</th>
 							<th>Date of Birth</th>
 							<th>Course</th>
-							<th>No. of Availment</th>
 						</tr>
 					  </thead>
 					<tbody>
 						<?php
-						$result = mysqli_query($conn, "SELECT  (SELECT COUNT(dep_status) FROM deployment_history WHERE dep_status=5 GROUP BY spes_id) as avail, s.spes_id,s.surName,s.firstName,s.email,s.gender,s.doBirth,s.tertDegree,d.spes_id 
+						$result = mysqli_query($conn, "SELECT s.spes_id,s.surName,s.firstName,s.email,s.gender,s.doBirth,s.tertDegree,d.spes_id 
 						FROM deployment_history as d JOIN spesaccount as s ON d.spes_id=s.spes_id WHERE d.dep_status=1 GROUP BY d.spes_id"); 
 						while($row=mysqli_fetch_array($result)) 
 						{ 		
@@ -37,7 +36,6 @@ include('../dbconnection/dbconnection.php');
 							$dob = $row['doBirth'];
 							$tdegree = $row['tertDegree'];
 							$avail = $row['avail'];
-
 							?>
 							<tr>
 								<td>
@@ -49,7 +47,6 @@ include('../dbconnection/dbconnection.php');
 								<td><?php echo $gender; ?></td>
 								<td><?php echo $dob; ?></td>
 								<td><?php echo $tdegree; ?></td>
-								<td><?php echo $avail; ?></td>
 							</tr>
 
 							<?php
