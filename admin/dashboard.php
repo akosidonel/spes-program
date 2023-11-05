@@ -59,7 +59,7 @@ $capacity = $result['capacity'];
 <div class="container">
 <div class="content">
     
-	<h4 class="mb-4" >Dashboard</h4>
+	<h4 class="mb-3" >Dashboard</h4>
 
 	<div class="row">
 	<div class="col-md-4">

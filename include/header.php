@@ -26,9 +26,13 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="adminIndex.php">SPES Accounts</a>
-              </li>
+            <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">SPES Accounts</a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">            
+                      <li><a class="dropdown-item" href="adminIndex.php">Active</a></li>
+                      <li><a class="dropdown-item" href="blacklisted.php">Blacklisted</a></li>
+                    </ul>
+              </li> 
               <li class="nav-item">
                 <a class="nav-link" href="SPESpending.php">SPES Application</a>
               </li>
