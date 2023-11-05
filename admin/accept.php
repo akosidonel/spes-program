@@ -57,14 +57,4 @@ $mail = new PHPMailer(true);
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }
 
-    /*
-    if(mysqli_query($conn,$query)){
-      echo "<script type='text/javascript'>alert('$message1');
-          window.location='SPESpending.php';
-          </script>";
-    }else{
-      echo "<script type='text/javascript'>alert('$message2');
-      window.location='SPESpending.php';</script>";
-    }
-    */
 ?>
