@@ -23,7 +23,7 @@ $capacity = $result['capacity'];
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="programModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -33,7 +33,7 @@ $capacity = $result['capacity'];
         </button>
       </div>
       <div class="modal-body">
-		<form id="pgram_form" method="POST">
+		<form id="pgram_form" method="POST" enctype="multipart/form-data">
 				<div class="form-group">
 					<label>Batch No.</label>
 					<input type="text" class="form-control" name="batch_number"  id="batch_number" placeholder="Create Batch Number">
@@ -64,7 +64,7 @@ $capacity = $result['capacity'];
 	<div class="row">
 	<div class="col-md-4">
 	<form name="form1" method="post">
-		<a href='#' class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-laptop-file"></i> Add Program</a>
+		<a href='#' class="btn btn-primary" data-toggle="modal" data-target="#programModal"><i class="fa-solid fa-laptop-file"></i> Add Program</a>
 	</form>
 	</div>
 	<div class="col">
@@ -128,6 +128,25 @@ $(document).ready(function() {
         "dom": '<"toolbar">frtip'
     } );
 } );
+$(document).on('submit', '#pgram_form', function(e){
+    e.preventDefault();
+    var fd = new FormData(this);
+    fd.append("save_pgram",true);
+    $.ajax({
+      type:"POST",
+      url: "../view/view.php",
+      data: fd,
+      processData: false,
+      contentType: false,
+      success:function(response){
+        var res = jQuery.parseJSON(response);
+        if(res.status == 200){
+              $('#programModal').modal('hide');
+              location.reload();
+        }
+      }
+    });
+   });
 
 </script>
 </html>

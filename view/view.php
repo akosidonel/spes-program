@@ -2,6 +2,7 @@
 session_start();
 error_reporting(0);
 include('../dbconnection/dbconnection.php');
+$stat=1;
 
 if(isset($_POST['action'])){
     // fetch data from deployment history
@@ -15,8 +16,8 @@ if(isset($_POST['action'])){
     //spes deployment dynamic search
     if($_POST['action'] =='searchRecord'){
         $search = $_POST['search'];
-        $sql = "SELECT * FROM spesaccount as s JOIN deployment_history as d ON s.spes_id=d.spes_id
-        WHERE surName LIKE '%$search%' OR firstName LIKE '%$search%' OR tertDegree LIKE '%$search%'
+        $sql = "SELECT s.firstName,s.surName,s.tertDegree FROM spesaccount as s JOIN deployment_history as d ON s.spes_id=d.spes_id
+        WHERE s.surName LIKE '%$search%' OR s.firstName LIKE '%$search%' OR s.tertDegree LIKE '%$search%'
         AND d.dep_status=2 ORDER BY s.spes_id DESC";
         getData($sql);
     }
@@ -64,13 +65,40 @@ if(isset($_POST['submit'])){
     echo $output;
 }
 
-//apply spes application
+//save spes application
 if (isset($_POST['save_app'])) {
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $batchNumber = mysqli_real_escape_string($conn, $_POST['batch_number']);
-    $stat=1;
+  
 
     $sql = "INSERT INTO deployment_history (spes_id,batch_number,dep_status) VALUES('$id','$batchNumber','$stat')";
+    $query = mysqli_query($conn, $sql);
+
+    if ($query) {
+        $res = [
+            'status' => 200,
+            'message' => 'Added successfully!.',
+        ];
+        echo json_encode($res);
+        return false;
+    } else {
+        $res = [
+            'status' => 500,
+            'message' => 'opps..something went wrong..',
+        ];
+        echo json_encode($res);
+        return false;
+    }
+}
+
+//save spes program
+if (isset($_POST['save_pgram'])) {
+    $batchNumber = mysqli_real_escape_string($conn, $_POST['batch_number']);
+    $program = mysqli_real_escape_string($conn, $_POST['program']);
+    $capacity = mysqli_real_escape_string($conn, $_POST['capacity']);
+    $year=date("Y");
+
+    $sql = "INSERT INTO program (batch_number,program,capacity,year,status) VALUES('$batchNumber','$program','$capacity','$year','$stat')";
     $query = mysqli_query($conn, $sql);
 
     if ($query) {
