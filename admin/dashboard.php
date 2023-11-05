@@ -10,7 +10,7 @@ include('../dbconnection/dbconnection.php');
 <?php $title = 'Dashboard'; include('../include/header.php');?>
 
 <?php 
-$deploymentCount = mysqli_query($conn, "SELECT COUNT(dep_status) as total FROM deployment_history WHERE dep_status = 1");
+$deploymentCount = mysqli_query($conn, "SELECT COUNT(CASE WHEN dep_status = 1 THEN 1 ELSE NULL END) as total FROM deployment_history ");
 $query = mysqli_fetch_array($deploymentCount);
 $total = $query['total'];
 ?>
@@ -33,19 +33,22 @@ $capacity = $result['capacity'];
         </button>
       </div>
       <div class="modal-body">
-		<form>
+		<form id="pgram_form" method="POST">
+				<div class="form-group">
+					<label>Batch No.</label>
+					<input type="text" class="form-control" name="batch_number"  id="batch_number" placeholder="Create Batch Number">
+				</div>
 				<div class="form-group">
 					<label>Programs & Project</label>
-					<input type="text" class="form-control" id="program" placeholder="Enter Programs & Project">
+					<input type="text" class="form-control" name="program" id="program" placeholder="Enter Programs & Project">
 				</div>
 				<div class="form-group">
 					<label>Capacity</label>
-					<input type="number" class="form-control" id="capacity" placeholder="Enter Capacity">
+					<input type="number" class="form-control" name="capacity" id="capacity" placeholder="Enter Capacity">
 				</div>
-		
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
 		</form>
       </div>
     </div>
@@ -57,12 +60,18 @@ $capacity = $result['capacity'];
 <div class="content">
     
 	<h4 class="mb-4" >Dashboard</h4>
- 
-	<h5 class="mb-4">Slot Available:  <?php echo htmlentities($capacity-$total)?></h5>
-	
+
+	<div class="row">
+	<div class="col-md-4">
 	<form name="form1" method="post">
 		<a href='#' class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-laptop-file"></i> Add Program</a>
 	</form>
+	</div>
+	<div class="col">
+	<h5 class="mb-4">Slot :  
+		<?php if ($total<=0){	echo ' Not Available'; }else{ echo htmlentities($capacity-$total); } ?></h5>
+	</div>
+	</div>
         <div class="table-responsive">
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
           <thead>		       
@@ -92,9 +101,9 @@ $capacity = $result['capacity'];
 								<td><?=$row['year']?></td>
 								<td><?php $stat = $row['status'];
 								 if($stat==1){?>
-									<span class="text-primary">Ongoing</span>
+									<span class="badge badge-primary">ONGOING</span>
 									<?php }else if($stat==0){?>
-									<span class="text-success">Completed</span>
+									<span class="badge badge-success">FINISHED</span>
 									<?php }?>
 							</td>
 							</tr>
@@ -111,7 +120,7 @@ $capacity = $result['capacity'];
 <script>
 $(document).ready(function() {
     $('#example').DataTable( { 
-        "order": [[ 0, "desc" ]],
+        "order": [[ 4, "desc" ]],
         scrollY:        '66vh',
         scrollCollapse: true,
         paging:         false,
