@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2023 at 11:28 PM
+-- Generation Time: Nov 05, 2023 at 01:56 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -69,11 +69,11 @@ CREATE TABLE `deployment_history` (
 --
 
 INSERT INTO `deployment_history` (`id`, `spes_id`, `dept_id`, `batch_number`, `date_from`, `date_to`, `dep_status`, `created_at`) VALUES
-(3, 1, '', 'YFD-2025AUG', '2023-08-30', '2023-09-27', 1, '2023-08-26 06:49:33.000000'),
-(5, 2, '', 'YFD-2023AUG', '2023-08-30', '2023-09-27', 5, '2023-08-31 01:29:18.000000'),
-(14, 2, NULL, 'YFD-2022JUNE', '', '', 3, '2022-11-01 01:15:16.000000'),
-(15, 2, NULL, 'YFD-2021AUG', '', '', 5, '0000-00-00 00:00:00.000000'),
-(21, 2, NULL, 'YFD-2025AUG', '', '', 1, '2023-11-04 05:13:18.937970');
+(3, 1, '', 'YFD-2025AUG', '2023-08-30', '2023-09-27', 2, '2023-08-26 06:49:33.000000'),
+(5, 2, '', 'YFD-2023AUG', '2023-11-06', '2023-11-30', 5, '2023-08-31 01:29:18.000000'),
+(14, 2, '', 'YFD-2022JUNE', '2023-11-06', '2023-11-30', 5, '2022-11-01 01:15:16.000000'),
+(15, 2, '', 'YFD-2021AUG', '2023-11-06', '2023-11-30', 5, '0000-00-00 00:00:00.000000'),
+(21, 2, '1', 'YFD-2025AUG', '2023-11-13', '2023-11-10', 2, '2023-11-04 05:13:18.937970');
 
 -- --------------------------------------------------------
 
@@ -107,10 +107,10 @@ CREATE TABLE `program` (
   `id` int(5) NOT NULL,
   `batch_number` varchar(30) NOT NULL,
   `program` varchar(100) NOT NULL,
-  `capacity` int(6) NOT NULL,
+  `capacity` int(5) NOT NULL,
   `year` varchar(10) NOT NULL,
-  `status` int(3) NOT NULL,
-  `created_at` int(11) NOT NULL
+  `status` int(2) NOT NULL,
+  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -118,11 +118,12 @@ CREATE TABLE `program` (
 --
 
 INSERT INTO `program` (`id`, `batch_number`, `program`, `capacity`, `year`, `status`, `created_at`) VALUES
-(1, 'YFD-2023AUG', 'SPES PROGRAM', 3, '2023', 0, 1),
-(2, 'YFD-2022JUNE', 'SPES PROGRAM', 20, '2022', 0, 1),
-(4, 'YFD-2021AUG', 'SPES PROGRAM', 10, '2021', 0, 1),
-(5, 'YFD-2024JUNE', 'SPES PROGRAM', 10, '2024', 0, 1),
-(6, 'YFD-2025AUG', 'SPES PROGRAM', 4, '2025', 1, 1);
+(1, 'YFD-2023AUG', 'SPES PROGRAM', 3, '2023', 0, '0000-00-00 00:00:00.000000'),
+(2, 'YFD-2022JUNE', 'SPES PROGRAM', 20, '2022', 0, '0000-00-00 00:00:00.000000'),
+(4, 'YFD-2021AUG', 'SPES PROGRAM', 10, '2021', 0, '0000-00-00 00:00:00.000000'),
+(5, 'YFD-2024JUNE', 'SPES PROGRAM', 10, '2024', 0, '0000-00-00 00:00:00.000000'),
+(6, 'YFD-2025AUG', 'SPES PROGRAM', 4, '2025', 0, '0000-00-00 00:00:00.000000'),
+(8, 'YFD-2026MARCH', 'SPES PROGRAM', 30, '2023', 1, '2023-11-05 12:54:28.180528');
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,7 @@ INSERT INTO `spesaccount` (`spes_id`, `username`, `password`, `surName`, `firstN
 (1, 'edd', 'edd112592', 'Engay', 'Edward Emil', 'Escultura', 'single', 'male', '1992-11-25', 'Manila', 'Filipino', 'Elma Engay', 'Mother', '316 LANZONES ST., SAMPALOC SITE II, BRGY. BF HOMES PARA&#65533;AQUE, CITY OF, METROPOLITAN MANILA', '316 LANZONES ST., SAMPALOC SITE II, BRGY. BF HOMES PARA&#65533;AQUE, CITY OF, METROPOLITAN MANILA', 2147483647, 'emhzhot@gmail.com', 'Edward Emil Engay', 'living', 'Eduardo Engay', 2147483647, 'fnone', 0, 15000, 'Elma Engay', 1987654321, 'mnone', 'Housewife', 0, 'SSIIES', '6 years', '0000-00-00', '0000-00-00', 'PNHS MAIN', '4 years', '0000-00-00', '0000-00-00', 'PUP ParaÃ±aque', 'BSIT', '0000-00-00', '0000-00-00', 'PCCST', 'Assoc. IT', '0000-00-00', '0000-00-00', 'one', '0000-00-00', 25, 0),
 (2, 'donel', '123456', 'Martinez', 'Donel', 'Escultura', 'single', 'male', '1990-12-19', 'Manila', 'Filipino', 'Elma Engay', 'Mother', '', '', 2147483647, 'reydonelmartinez@gmail.com', 'Edward Emil Engay', 'living', 'Eduardo Engay', 2147483647, 'fnone', 0, 15000, 'Elma Engay', 1987654321, 'mnone', 'Housewife', 0, 'SSIIES', '6 years', '0000-00-00', '0000-00-00', 'PNHS MAIN', '4 years', '0000-00-00', '0000-00-00', 'PUP ParaÃ±aque', 'BSHM', '0000-00-00', '0000-00-00', 'PCCST', 'Assoc. IT', '0000-00-00', '0000-00-00', 'one', '0000-00-00', 0, 0),
 (3, 'jerome', '12345', 'Alimpongat', 'Jerome', 'Agila', 'single', 'male', '2023-08-21', '', '', '', '', '', '', 0, 'jerome@gmail.com', '', '', '', 0, '', 0, 0, '', 0, '', '', 0, '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', 'BSBA', '0000-00-00', '0000-00-00', '', 'BSBA', '0000-00-00', '0000-00-00', '', '0000-00-00', 2345, 0),
-(4, 'joyce', '12345', 'Buergo', 'Joycelyn', 'C', 'single', 'female', '2023-08-16', '', '', '', '', '', '', 0, 'joycelyn@gmail.com', '', '', '', 0, '', 0, 0, '', 0, '', '', 0, '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', 'BSIT', '0000-00-00', '0000-00-00', '', 'BSIT', '0000-00-00', '0000-00-00', '', '0000-00-00', 3722, 1);
+(4, 'joyce', '12345', 'Buergo', 'Joycelyn', 'C', 'single', 'female', '2023-08-16', '', '', '', '', '', '', 0, 'joycelyn@gmail.com', '', '', '', 0, '', 0, 0, '', 0, '', '', 0, '', '', '0000-00-00', '0000-00-00', '', '', '0000-00-00', '0000-00-00', '', 'BSIT', '0000-00-00', '0000-00-00', '', 'BSIT', '0000-00-00', '0000-00-00', '', '0000-00-00', 3722, 0);
 
 -- --------------------------------------------------------
 
@@ -309,7 +310,7 @@ ALTER TABLE `pesoadmin`
 -- AUTO_INCREMENT for table `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `spesaccount`
