@@ -22,7 +22,6 @@ include('../dbconnection/dbconnection.php');
 							<th>Name</th>
 							<th>Date of Birth</th>
 							<th>Course</th>
-							<th>Status</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,18 +30,11 @@ include('../dbconnection/dbconnection.php');
             if(mysqli_num_rows($sql)){
               foreach($sql as $row){?>
               <tr>
-                <td>
-								<a href='update_user.php' target="_blank" onclick="window.open('update_user.php?id=<?=$row['spes_id'] ?>'); return false;"><i class="fa-solid fa-file-pen text-success"></i></a>
-								|
-								<a href="javascript:confirmDelete(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-trash text-secondary"></i></a>
-								|
-								<a href="javascript:confirmViolation(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-bolt text-danger"></i></a>
-								</td>
-								<td><?=$row['username']?></td>
-								<td><?=$row['firstName'].' '.$row['surName']?></td>				
-								<td><?=$row['doBirth']?></td>
-								<td><?=$row['tecDegree']?></td>
-								<td><?=$row['status']?></td>
+					<td><a href="javascript:confirmDelete(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-trash text-danger"></i></a></td>
+					<td><?=$row['username']?></td>
+					<td><?=$row['firstName'].' '.$row['surName']?></td>				
+					<td><?=$row['doBirth']?></td>
+					<td><?=$row['tecDegree']?></td>
               </tr>
           <?php }}?>
 					</tbody>
