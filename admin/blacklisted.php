@@ -12,7 +12,6 @@ include('../dbconnection/dbconnection.php');
 		<div class="container">
 		<div class="content">
     <h3>Blacklisted Accounts</h3>
-				<a href='add_user.php' id="wew" target="_blank" onclick="window.open('add_user.php','pagename','resizable,height=1000,width=540'); return false;" class="btn btn-primary my-2"><i class="fa-solid fa-user-plus"></i> Add Account</a>
 			<form name="form1" method="post" action="adminIndex.php">
         <div class="table-responsive">
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
