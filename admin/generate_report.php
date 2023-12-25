@@ -11,7 +11,7 @@ include('../dbconnection/dbconnection.php');
 	<div class="form-row">
 		<div class="container">
 		<div class="content">
-    <h3>Blacklisted Accounts</h3>
+    <h3>Generate Report</h3>
 			<form name="form1" method="post" action="adminIndex.php">
         <div class="table-responsive">
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
@@ -47,8 +47,6 @@ include('../dbconnection/dbconnection.php');
 </body>
 <?php include('../include/footer.php');?>
 <script>
-var addurl = 'add_user.php';
-var demowin = 'demo_win';
 
 $(document).ready(function() {
     $('#example').DataTable( { 
