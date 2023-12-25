@@ -40,6 +40,9 @@
                 <a class="nav-link" href="spesDeployment.php">SPES Deployment</a>
               </li>  
               <li class="nav-item">
+                <a class="nav-link" href="">Generate Report</a>
+              </li> 
+              <li class="nav-item">
                 <a class="nav-link" href="adminIndex2.php">Admin Account</a>
               </li>
               </ul>
