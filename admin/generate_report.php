@@ -17,11 +17,12 @@ include('../dbconnection/dbconnection.php');
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
           			<thead>		       
 						<tr>
-							<th>Action</th>
-							<th>Username</th>
 							<th>Name</th>
-							<th>Date of Birth</th>
+							<th>Age</th>
+							<th>Gender</th>
 							<th>Course</th>
+							<th>Barangay</th>
+							<th>Deployment</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -30,11 +31,7 @@ include('../dbconnection/dbconnection.php');
             if(mysqli_num_rows($sql)){
               foreach($sql as $row){?>
               <tr>
-					<td><a href="javascript:confirmDelete(<?=$row['spes_id'] ?>)"><i class="fa-solid fa-trash text-danger"></i></a></td>
-					<td><?=$row['username']?></td>
-					<td><?=$row['firstName'].' '.$row['surName']?></td>				
-					<td><?=$row['doBirth']?></td>
-					<td><?=$row['tecDegree']?></td>
+					
               </tr>
           <?php }}?>
 					</tbody>
