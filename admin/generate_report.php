@@ -14,7 +14,7 @@ include('../include/header.php');?>
 	<div class="form-row">
 		<div class="container">
 		<div class="content">
-    <h3>Generate Report on Batch <span></span></h3>
+    <h3>Generate Report on Batch <span><?php echo $batchid?></span></h3>
 			<form name="form1" method="post" action="adminIndex.php">
         <div class="table-responsive">
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
