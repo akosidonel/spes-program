@@ -7,9 +7,10 @@ include('../dbconnection/dbconnection.php');
    exit();
  }else {?>
 
-<?php $batchid = $_GET['batch_id']?>
+<?php $batchid = $_GET['batch_id']; 
+$title = 'Generate Report on '.$batchid ; 
+include('../include/header.php');?>
 
-<?php $title = 'Generate Report on '.$batchid ; include('../include/header.php');?>
 	<div class="form-row">
 		<div class="container">
 		<div class="content">
