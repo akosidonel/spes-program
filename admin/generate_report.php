@@ -7,11 +7,13 @@ include('../dbconnection/dbconnection.php');
    exit();
  }else {?>
 
-<?php $title = 'Generate Report'; include('../include/header.php');?>
+<?php $batchid = $_GET['batch_id']?>
+
+<?php $title = 'Generate Report '.$batchid ; include('../include/header.php');?>
 	<div class="form-row">
 		<div class="container">
 		<div class="content">
-    <h3>Generate Report on Batch <span><?php echo $_GET['batch_id']?></span></h3>
+    <h3>Generate Report on Batch <span></span></h3>
 			<form name="form1" method="post" action="adminIndex.php">
         <div class="table-responsive">
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
@@ -27,7 +29,6 @@ include('../dbconnection/dbconnection.php');
 					</thead>
 					<tbody>
 					<?php
-					$batchid = $_GET['batch_id'];
 					$sql = mysqli_query($conn,"SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), s.doBirth)), '%Y') + 0 AS age,h.spes_id,h.dept_id,h.batch_number,s.spes_id,s.firstName,s.mName,s.surName,s.gender,s.tertDegree,s.barangay,d.dept_id,d.department_name
 					FROM deployment_history as h JOIN spesaccount as s ON h.spes_id = s.spes_id JOIN department as d ON h.dept_id=d.dept_id WHERE h.batch_number='$batchid'");
 					if(mysqli_num_rows($sql)){
