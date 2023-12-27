@@ -11,7 +11,7 @@ include('../dbconnection/dbconnection.php');
 	<div class="form-row">
 		<div class="container">
 		<div class="content">
-    <h3>Generate Report</h3>
+    <h3>Generate Report on Batch <span><?php echo $_GET['batch_id']?></span></h3>
 			<form name="form1" method="post" action="adminIndex.php">
         <div class="table-responsive">
         <table id="example" class="display table-striped" style="width:100%; height: 100%;">
@@ -50,6 +50,12 @@ include('../dbconnection/dbconnection.php');
 </div>
 </body>
 <?php include('../include/footer.php');?>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
 <script>
 
 $(document).ready(function() {
@@ -59,7 +65,11 @@ $(document).ready(function() {
         scrollCollapse: true,
         paging:         false,
         "scrollX": true,
-        "dom": '<"toolbar">frtip'
+        "dom": '<"toolbar">frtip',
+		dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
     } );
 } );
 </script>
