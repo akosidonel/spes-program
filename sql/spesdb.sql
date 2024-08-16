@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2023 at 07:40 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Aug 16, 2024 at 09:38 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,8 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `department` (
   `dept_id` int(3) NOT NULL,
   `department_name` varchar(50) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `department`
@@ -60,19 +61,16 @@ CREATE TABLE `deployment_history` (
   `batch_number` varchar(30) NOT NULL,
   `date_from` varchar(20) NOT NULL,
   `date_to` varchar(20) NOT NULL,
-  `dep_status` int(2) NOT NULL DEFAULT 0,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `dep_status` int(2) NOT NULL DEFAULT '0',
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `deployment_history`
 --
 
 INSERT INTO `deployment_history` (`id`, `spes_id`, `dept_id`, `batch_number`, `date_from`, `date_to`, `dep_status`, `created_at`) VALUES
-(5, 2, '1', 'YFD-2023AUG', '2023-06-06', '2023-11-30', 5, '2023-08-31 01:29:18.000000'),
-(14, 2, '2', 'YFD-2022JUNE', '2022-06-06', '2022-11-30', 5, '2022-11-01 01:15:16.000000'),
-(15, 2, '3', 'YFD-2021AUG', '2021-07-06', '2021-11-30', 5, '2021-12-23 02:57:08.000000'),
-(23, 2, '4', 'YFD-2024JUNE', '2024-12-24', '2025-03-24', 1, '2024-11-27 00:45:12.000000');
+(30, 2, NULL, '', '', '', 5, '0000-00-00 00:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -86,7 +84,7 @@ CREATE TABLE `pesoadmin` (
   `password` varchar(100) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `position` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pesoadmin`
@@ -109,19 +107,15 @@ CREATE TABLE `program` (
   `capacity` int(5) NOT NULL,
   `year` varchar(10) NOT NULL,
   `status` int(2) NOT NULL,
-  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `program`
 --
 
 INSERT INTO `program` (`id`, `batch_number`, `program`, `capacity`, `year`, `status`, `created_at`) VALUES
-(2, 'YFD-2022JUNE', 'SPES PROGRAM', 20, '2022', 0, '0000-00-00 00:00:00.000000'),
-(4, 'YFD-2021AUG', 'SPES PROGRAM', 10, '2021', 0, '0000-00-00 00:00:00.000000'),
-(5, 'YFD-2024JUNE', 'SPES PROGRAM', 10, '2024', 0, '0000-00-00 00:00:00.000000'),
-(6, 'YFD-2023AUG', 'SPES PROGRAM', 4, '2025', 0, '0000-00-00 00:00:00.000000'),
-(8, 'YFD-2023MARCH', 'SPES PROGRAM', 2, '2023', 1, '2023-11-05 12:54:28.180528');
+(8, 'YFD-2023MARCH', 'SPES PROGRAM', 2, '2023', 0, '2023-11-05 12:54:28.180528');
 
 -- --------------------------------------------------------
 
@@ -180,7 +174,7 @@ CREATE TABLE `spesaccount` (
   `historyYear` date DEFAULT NULL,
   `spesID` int(255) DEFAULT NULL,
   `is_blacklist` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `spesaccount`
@@ -247,7 +241,27 @@ CREATE TABLE `spesrequest` (
   `historySpes` varchar(100) NOT NULL,
   `historyYear` date NOT NULL,
   `spesID` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `spes_availment`
+--
+
+CREATE TABLE `spes_availment` (
+  `id` int(11) NOT NULL,
+  `spes_id` int(11) NOT NULL,
+  `no_avail` int(11) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `spes_availment`
+--
+
+INSERT INTO `spes_availment` (`id`, `spes_id`, `no_avail`, `date_created`) VALUES
+(1, 2, 4, '2024-08-15 09:49:03');
 
 --
 -- Indexes for dumped tables
@@ -284,6 +298,12 @@ ALTER TABLE `spesaccount`
   ADD PRIMARY KEY (`spes_id`);
 
 --
+-- Indexes for table `spes_availment`
+--
+ALTER TABLE `spes_availment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -297,7 +317,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `deployment_history`
 --
 ALTER TABLE `deployment_history`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `pesoadmin`
@@ -315,7 +335,13 @@ ALTER TABLE `program`
 -- AUTO_INCREMENT for table `spesaccount`
 --
 ALTER TABLE `spesaccount`
-  MODIFY `spes_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `spes_id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `spes_availment`
+--
+ALTER TABLE `spes_availment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

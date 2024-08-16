@@ -15,9 +15,9 @@ include('dbconnection/dbconnection.php');
         if($row['is_blacklist']==1){
           echo "<script>alert('Your account is Suspended!');</script>";
         }else{
-          $results = mysqli_query($conn, "SELECT COUNT(dep_status=5) as stat, spes_id FROM deployment_history WHERE dep_status =5 AND spes_id=$id ");
+          $results = mysqli_query($conn, "SELECT no_avail, spes_id FROM spes_availment WHERE spes_id=$id ");
           $rows=mysqli_fetch_assoc($results);
-          if($rows['stat']<4){
+          if($rows['no_avail']<=5){
             $_SESSION['ulogin'] = $rows['spes_id'];
             header('location:spes/dashboard.php');
           }else{
