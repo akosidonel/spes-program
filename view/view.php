@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
                 }
         $results = mysqli_query($conn, "SELECT no_avail FROM spes_availment WHERE spes_id ='$checkboxid' ");      
         $row=mysqli_fetch_assoc($results);
-        $avail = $row['availment']+1;
+        $avail = $row['no_avail']+1;
         mysqli_query($conn, "UPDATE spes_availment SET no_avail ='$avail' WHERE spes_id ='$checkboxid' ");
         
       }
