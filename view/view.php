@@ -122,3 +122,8 @@ if (isset($_POST['save_pgram'])) {
         return false;
     }
 }
+
+if(isset($_POST['click_edit'])){
+    $bid= $_POST['batch_number'];
+    echo $bid;
+}

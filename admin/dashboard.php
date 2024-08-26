@@ -91,11 +91,11 @@ $capacity = $result['capacity'];
 							foreach($sql as $row){?>
 							<tr>
 								<td>
-									<a href='#' target="_blank" onclick="window.open('.php?programId=<?=$row['id']?>','pagename','resizable,height=540,width=540'); return false;"><i class="fa-sharp fa-solid fa-pen-to-square fa-lg text-primary"></i></a>
+									<a href='#' class="editbtn"><i class="fa-sharp fa-solid fa-pen-to-square fa-lg text-primary"></i></a>
 									|
 									<a href="javascript:confirmDelete(<?=$row['id']?>)"><i class="fa-sharp fa-solid fa-trash fa-lg text-danger"></i></a>
 								</td>
-								<td><?=$row['batch_number']?></td>
+								<td class="batch_number"><?=$row['batch_number']?></td>
 								<td><?=$row['program']?></td>
 								<td><?=$row['capacity']?></td>
 								<td><?=$row['year']?></td>
@@ -104,6 +104,8 @@ $capacity = $result['capacity'];
 									<span class="badge badge-primary">ONGOING</span>
 									<?php }else if($stat==0){?>
 									<span class="badge badge-success">FINISHED</span>
+									<?php }else if($stat==2){?>
+									<span class="badge badge-danger">ONHOLD</span>
 									<?php }?>
 							</td>
 							</tr>
@@ -127,6 +129,23 @@ $(document).ready(function() {
         "scrollX": true,
         "dom": '<"toolbar">frtip'
     } );
+	$('.editbtn').on('click', function (){
+		$('#editmodal').modal('show');
+
+		var data = $(this).closest('tr').find('.batch_number').text();
+		$.ajax({
+			method:'POST',
+			url:'../view/view.php',
+			data:{
+				'click_edit':true,
+				'batch_number':data,
+			},
+			success: function (response){
+				console.log(response);
+			}
+		});
+	});
+
 } );
 $(document).on('submit', '#pgram_form', function(e){
     e.preventDefault();
@@ -152,3 +171,45 @@ $(document).on('submit', '#pgram_form', function(e){
 </html>
 
 <?php }?>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editmodal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Program</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"> 
+	  <form id="update_pgram" method="POST" enctype="multipart/form-data">
+				<div class="form-group">
+					<label>Batch No.</label>
+					<input type="text" class="form-control" name="batch_number"  id="batch_number" placeholder="Create Batch Number">
+				</div>
+				<div class="form-group">
+					<label>Programs & Project</label>
+					<input type="text" class="form-control" name="program" id="program" placeholder="Enter Programs & Project">
+				</div>
+				<div class="form-group">
+					<label>Capacity</label>
+					<input type="number" class="form-control" name="capacity" id="capacity" placeholder="Enter Capacity">
+				</div>
+				<div class="form-group">
+					<label>Program status</label>
+					<select class="form-control" name="status" >
+							<option value="1">On-going</option>
+							<option value="2">Hold</option>
+							<option value="0">Finish</option>
+					</select>
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary updatebtn">Update</button>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
